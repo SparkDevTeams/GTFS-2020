@@ -1,5 +1,5 @@
 import React from 'react';
-import { MainContainer, MapContainer, ListContainer } from '../styles';
+import { MainContainer, MapContainer, ListContainer } from './styles';
 import { Map as LeafletMap, TileLayer, Marker, Popup } from 'react-leaflet';
 
 const MainPage = () => {
