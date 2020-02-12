@@ -4,7 +4,9 @@ import MainPage from './Components/MainPage/MainPage';
 
 function App() {
   return (
-    <MainPage/>
+    <div>
+      <MainPage style={{float: "left"}}/>
+    </div>
   );
 }
 

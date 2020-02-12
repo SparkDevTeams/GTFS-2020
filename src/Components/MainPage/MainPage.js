@@ -1,6 +1,7 @@
 import React from 'react';
 import { MainContainer, MapContainer, ListContainer } from './styles';
 import { Map as LeafletMap, TileLayer, Marker, Popup } from 'react-leaflet';
+import RouteCard from "../MainPage/RouteCard";
 
 const MainPage = () => {
   return (
@@ -20,7 +21,10 @@ const MainPage = () => {
           </Marker>
         </LeafletMap>
       </MapContainer>
-      <ListContainer></ListContainer>
+      <ListContainer>
+        <RouteCard title={"Routes"}/>
+        <RouteCard title={"Trips"}/>
+      </ListContainer>
     </MainContainer>
   )
 };
