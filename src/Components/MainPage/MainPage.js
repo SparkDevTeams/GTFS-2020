@@ -37,7 +37,7 @@ const MainPage = () => {
         </LeafletMap>
       </MapContainer>
       <ListContainer>
-        <RouteCard title={"Routes"} Routes={""}/>
+        <RouteCard title={"Routes"} Routes={routes}/>
         <RouteCard title={"Trips"}/>
       </ListContainer>
     </MainContainer>
