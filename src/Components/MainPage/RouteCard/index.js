@@ -16,12 +16,25 @@ const RouteCard = (props) => {
 
             <ul>
                 {
-                    
+                    // Display Routes
                     props.routes.map(function (item, i)
                     {
                         console.log(item);
                         return <li key={i}>{item.route_long_name}</li>
                     })
+                }
+            </ul>
+
+
+
+            <ul>
+                {
+                    // Display Trips
+                    // props.routes.map(function (item, i)
+                    // {
+                    //     console.log(item);
+                    //     return <li key={i}>{item.route_long_name}</li>
+                    // })
                 }
             </ul>
 
