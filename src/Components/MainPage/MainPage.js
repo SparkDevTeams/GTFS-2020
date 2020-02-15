@@ -16,7 +16,7 @@ const MainPage = () => {
     }, []);
 
     useEffect(() => {
-        console.log(routes);
+        console.log("THIS CAME IN BRO", routes);
     }, [routes])
 
   return (
@@ -37,8 +37,8 @@ const MainPage = () => {
         </LeafletMap>
       </MapContainer>
       <ListContainer>
-        <RouteCard title={"Routes"} Routes={routes}/>
-        <RouteCard title={"Trips"}/>
+        <RouteCard title={"Routes"} routes={routes}/>
+        {/* <RouteCard title={"Trips"}/> */}
       </ListContainer>
     </MainContainer>
   )
