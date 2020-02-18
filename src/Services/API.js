@@ -22,8 +22,16 @@ const API = {
     },
     getRoutes : async function() {
         let response = await axios.get(URLGetAllRoutes);
-        console.log("This happened: ", response);
         return response.data;
+    },
+    getInfoByRoute: async (id) => {
+        try {
+            let response = await axios.get(`https://gtfs-mdc.herokuapp.com/getIDs?id=${id}`);
+            return response.data;
+        }
+        catch(e){
+            console.log(e);
+        }
     }
 };
 
