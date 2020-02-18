@@ -1,23 +1,21 @@
-import React, {useEffect, useState} from 'react';
+import React, { useEffect, useState } from 'react';
 import { MainContainer, MapContainer, ListContainer } from './styles';
 import { Map as LeafletMap, TileLayer, Marker, Popup } from 'react-leaflet';
 import RouteCard from "../MainPage/RouteCard";
 import API from "../../Services/API";
 
 const MainPage = () => {
-    // let status = await API.getStatus();
-    //global variables
 
-    const [routes, setRoutes] = useState([]);
-    // console.log("Outside Routes: " + routes[1].route_long_name);
-    useEffect(async () => {
-        let res = await API.getRoutes();
-        setRoutes( res);
-    }, []);
+  const [routes, setRoutes] = useState([]);
+  useEffect(() => {
+    async function fetchData() {
+      let res = await API.getRoutes();
+      setRoutes(res);
+    }
 
-    useEffect(() => {
-        console.log("THIS CAME IN BRO", routes);
-    }, [routes])
+    fetchData();
+  }, []);
+
 
   return (
     <MainContainer>
