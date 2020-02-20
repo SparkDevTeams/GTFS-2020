@@ -9,7 +9,7 @@ class TripsCard extends React.Component
     render() {
         return(
             <>
-
+                <h3>TRIPS HERE BRO</h3>
             </>
         )
     }
