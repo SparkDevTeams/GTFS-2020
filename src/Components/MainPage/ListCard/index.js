@@ -3,7 +3,7 @@ import Card from '../../Commons/Card/Card';
 import { Title } from './styles';
 import API from '../../../Services/API';
 
-const RouteCard = (props) => {
+const ListCard = (props) => {
 
   const handleRouteClick = async (item) => {
     let res = await API.getInfoByRoute(item.route_id);
@@ -18,4 +18,4 @@ const RouteCard = (props) => {
   )
 }
 
-export default RouteCard;
+export default ListCard;

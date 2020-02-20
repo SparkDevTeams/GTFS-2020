@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { MainContainer, MapContainer, ListContainer } from './styles';
-import RouteCard from "../MainPage/RouteCard";
+import ListCard from "./ListCard";
 import API from "../../Services/API";
 import MapComponent from './Map';
 
@@ -23,7 +23,7 @@ const MainPage = () => {
         <MapComponent/>
       </MapContainer>
       <ListContainer>
-        <RouteCard title={"Routes"} routes={routes}/>
+        <ListCard title={"Routes"} routes={routes}/>
         {/* <RouteCard title={"Trips"}/> */}
       </ListContainer>
     </MainContainer>
