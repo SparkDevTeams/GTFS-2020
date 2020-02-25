@@ -4,9 +4,6 @@ import API from "../../../Services/API";
 
 
 class RouteCard extends React.Component {
-    constructor(props) {
-        super(props);
-    }
 
     handleRouteClick = async (item) => {
         this.props.callBack(item.route_id);
