@@ -6,8 +6,8 @@ let passedRouteId = null;
 
 const ListCard = (props) => {
 
-    //This needs to get implemented
-    const [trips, setTrips] = useState("NoTRIPS");
+    //TODO This needs to get implemented
+    // const [trips, setTrips] = useState("NoTRIPS");
     const [routes, setRoutes] = useState("NoROUTES");
 
     function getRouteID(routeID) {
