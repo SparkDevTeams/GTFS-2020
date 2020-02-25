@@ -15,6 +15,7 @@ const ListCard = (props) => {
         setRoutes(routeID);
         console.log("THE ID PASSED SUCCESSFULLY to ListCard", passedRouteId);
         console.log("routes State var is now ", routes);
+        props.passRouteId(routeID);
     }
 
     useEffect(
