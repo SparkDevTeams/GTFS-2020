@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-const Card = styled.div(({width = '100%', height = 'auto', margin = '0px', lg = width, md = lg, sm = md, xs= sm, cursor, hover}) => `
+const Card = styled.div(({width = '100%', height = 'auto', margin = '0px', lg = width, md = lg, sm = md, xs = sm, cursor, hover}) => `
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
