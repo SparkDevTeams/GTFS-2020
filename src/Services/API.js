@@ -2,7 +2,6 @@ const axios = require('axios');
 const URL = "https://gtfs-mdc.herokuapp.com/";
 const URLGetAllRoutes = "https://gtfs-mdc.herokuapp.com/routes/find/all";
 
-
 const API = {
     getStatus: async function() {
         await axios.get(URL)

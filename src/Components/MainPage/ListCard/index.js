@@ -1,13 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { Title } from './styles';
 import RouteCard from "../RouteCard";
-import API from "../../../Services/API";
 
 let passedRouteId = null;
 
 function getRouteID(routeID){
   passedRouteId = routeID;
-    console.log("THE ID PASSED SUCCESSFULLY", passedRouteId);
+    console.log("THE ID PASSED SUCCESSFULLY to ListCard", passedRouteId);
 }
 
 class ListCard extends React.Component
@@ -23,6 +22,7 @@ class ListCard extends React.Component
           <Title>{this.props.title}</Title>
 
           <RouteCard Routes={this.props.routes} callBack={getRouteID}/>
+        {/*  TODO add trips - don't know how :D*/}
         </>
     )
   }

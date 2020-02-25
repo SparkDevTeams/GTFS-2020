@@ -14,7 +14,7 @@ class RouteCard extends React.Component {
         this.props.callBack(item.route_id);
         let res = await API.getInfoByRoute(item.route_id);
         console.log(res);
-    }
+    };
 
 
     render() {
