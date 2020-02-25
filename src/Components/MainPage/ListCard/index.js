@@ -9,13 +9,13 @@ function getRouteID(routeID) {
     console.log("THE ID PASSED SUCCESSFULLY to ListCard", passedRouteId);
 }
 
-const ListCard = (props) => {
+const ListCard = ({title, routes}) => {
     return (
         <>
             {/* Displays Routes */}
-            <Title>{this.props.title}</Title>
+            <Title>{title}</Title>
 
-            <RouteCard Routes={this.props.routes} callBack={getRouteID}/>
+            <RouteCard Routes={routes} callBack={getRouteID}/>
             {/*  TODO add trips - don't know how :D*/}
         </>
     )
