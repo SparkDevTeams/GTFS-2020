@@ -8,7 +8,7 @@ class RouteCard extends React.Component {
     handleRouteClick = async (item) => {
         this.props.callBack(item.route_id);
         let res = await API.getInfoByRoute(item.route_id);
-        console.log(res);
+        console.log("GETINFOBYROUTES",res);
     };
 
 
