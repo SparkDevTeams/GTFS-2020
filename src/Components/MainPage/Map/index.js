@@ -12,16 +12,8 @@ const MapComponent = (props) => {
     const [zoom, setZoom] = useState(17);
     const [shape, setShape] = useState([]);
 
-    // This useEffect runs when the component is loaded, we're calling
-    // the "API" to get the shape and set it to our state variable
-
-    //Todo ask fulton how to get this to run on props change
     // useEffect(() => {
-    //     function newShape(){
-    //         setShape(props.trips[0].shape_info);
-    //     }
-    //
-    //     newShape()
+    //     setShape(props.trips[0].shape_info);
     // }, [props.trips]);
 
     useEffect(() => {

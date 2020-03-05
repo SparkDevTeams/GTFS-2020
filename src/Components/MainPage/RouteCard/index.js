@@ -1,39 +1,38 @@
-import React, {useEffect, useState} from 'react';
+import React, { useEffect, useState } from 'react';
 import Card from "../../Commons/Card/Card";
-import API from "../../../Services/API";
+import { CardListContainer } from './styles';
 
 
-class RouteCard extends React.Component {
+const RouteCard = (props) => {
+  const [routes, setRoutes] = useState([]);
 
-
-
-    handleRouteClick = async (item) => {
-        this.props.callBack(item.route_id);
-        //Is Being done in MainPage
-        // let res = await API.getInfoByRoute(item.route_id);
-        // console.log("GETINFOBYROUTES in RouteCard",res);
-    };
-
-
-
-    render() {
-        const {Routes} = this.props;
-        return (
-            <>
-                {
-                    Routes.map((route, i) =>
-                        <Card height="10%" margin="5px" key={i}
-                              onClick={() => this.handleRouteClick(route)}>
-                            {route.route_long_name}
-                            <ul>
-
-                            </ul>
-                        </Card>
-                    )
-                }
-            </>
-        )
+  useEffect(() => {
+    if (props.Routes.routes) {
+      if (Object.entries(props.Routes.routes).length !== 0) {
+        setRoutes(props.Routes.routes);
+      }
+      else {
+        setRoutes([]);
+      }
     }
+  }, [props.Routes]);
+
+  const handleRouteClick = async (item) => {
+    props.callBack(item.RouteId);
+  };
+
+  return (
+    <CardListContainer>
+      {
+        routes.map((route, i) =>
+          <Card height="10%" margin="5px" key={route.RouteId}
+            onClick={() => handleRouteClick(route)}>
+            {route.Name1}
+          </Card>
+        )
+      }
+    </CardListContainer>
+  )
 }
 
 export default RouteCard;

@@ -1,36 +1,44 @@
-import React, {useEffect, useState} from 'react';
-import {ListContainer, MainContainer, MapContainer} from './styles';
+import React, { useEffect, useState } from 'react';
+import { ListContainer, MainContainer, MapContainer } from './styles';
 import ListCard from "./ListCard";
 import API from "../../Services/API";
 import MapComponent from './Map';
 
-//TODO Need fulton to approve or use stateVariables
-let routeID = "";
-let tripsWithRoutes
 const MainPage = () => {
 
-    //TODO ask how to get rid of let
-    let getTripsWithRoutes = async (routeId) => {
-        tripsWithRoutes = await API.getInfoByRoute(routeId);
-        console.log("GETINFOBYROUTES",tripsWithRoutes);
-    };
-
-
-    function passRoute(newRouteID){
-        routeID = newRouteID;
-        console.log("Main page now has a new RouteID", routeID);
-        getTripsWithRoutes(newRouteID);
-    }
-
+    const [routeID, setRouteId] = useState("");
     const [routes, setRoutes] = useState([]);
+    const [tripsWithRoutes, setTripsWithRoutes] = useState({});
+    const [tokens, setTokens] = useState([]);
+    const [currentToken, setCurrentToken] = useState('');
+
     useEffect(() => {
         async function fetchData() {
-            let res = await API.getRoutes();
-            setRoutes(res);
+            let apiTokens = await API.getTokens();
+            setTokens(apiTokens);
+            setCurrentToken(apiTokens[0]);
         }
 
         fetchData();
     }, []);
+
+    useEffect(() => {
+        async function fetchRoutes() {
+            let apiRoutes = await API.getRoutes(currentToken);
+            setRoutes(apiRoutes);
+        }
+
+        fetchRoutes();
+    }, [currentToken]);
+
+    // useEffect(() => {
+    //     async function getTripsWithRoutes() {
+    //         let trips = await API.getInfoByRoute(routeID);
+    //         setTripsWithRoutes(trips);
+    //     };
+
+    //     getTripsWithRoutes();
+    // }, [routeID]);
 
 
     return (
@@ -41,7 +49,7 @@ const MainPage = () => {
                 />
             </MapContainer>
             <ListContainer>
-                <ListCard title={"Routes"} routes={routes} passRouteId={passRoute}/>
+                <ListCard title={"Routes"} routes={routes} passRouteId={setRouteId} setCurrentToken={setCurrentToken} tokens={tokens}/>
                 {/* <RouteCard title={"Trips"}/> */}
             </ListContainer>
         </MainContainer>
