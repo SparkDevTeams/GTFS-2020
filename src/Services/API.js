@@ -1,6 +1,6 @@
 const axios = require('axios');
 const URL = "https://gtfs-mdc.herokuapp.com/";
-const URLGetAllRoutes = "https://gtfs-mdc.herokuapp.com/routes/find/all";
+const URLGetAllRoutes = "https://gtfs-mdc.herokuapp.com/routes/find/all?token=";
 
 const API = {
     getStatus: async function () {
@@ -19,8 +19,8 @@ const API = {
                 // always executed
             });
     },
-    getRoutes: async function () {
-        let response = await axios.get(URLGetAllRoutes);
+    getRoutes: async function (token) {
+        let response = await axios.get(`${URLGetAllRoutes}${token}`);
         return response.data;
     },
     getInfoByRoute: async (id) => {
@@ -30,6 +30,10 @@ const API = {
         } catch (e) {
             console.log(e);
         }
+    },
+    getTokens : async () => {
+        let response = await axios.get('https://gtfs-mdc.herokuapp.com/tokens');
+        return response.data;
     }
 };
 
