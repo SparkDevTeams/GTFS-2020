@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import './App.css';
 import MainPage from './Components/MainPage/MainPage';
 import Navbar from "./Components/navbar/Navbar";
-import GlobalStyle from './Components/Styles/Global';
 // function App() {
 //   return (
 //     <div>
@@ -20,7 +19,6 @@ class App extends Component {
 
     return (
       <>
-        <GlobalStyle />
         <div>
             <MainPage/>
         </div>
