@@ -9,7 +9,7 @@ const MainPage = () => {
     const [routeID, setRouteId] = useState("");
     const [routes, setRoutes] = useState([]);
     const [tripsWithRoutes, setTripsWithRoutes] = useState({});
-    const [tokens, setTokens] = useState([]);
+    const [tokens, setTokens] = useState({});
     const [currentToken, setCurrentToken] = useState('');
 
     useEffect(() => {
