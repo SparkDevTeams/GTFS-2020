@@ -16,9 +16,8 @@ const MainPage = () => {
         async function fetchData() {
             let apiTokens = await API.getTokens();
             setTokens(apiTokens);
-            setCurrentToken(apiTokens[0]);
+            setCurrentToken(Object.values(apiTokens)[0]);
         }
-
         fetchData();
     }, []);
 
@@ -42,12 +41,15 @@ const MainPage = () => {
 
 
     return (
+        // Map LeftSide
         <MainContainer>
             <MapContainer>
                 <MapComponent
                     trips={tripsWithRoutes}
                 />
             </MapContainer>
+
+        {/*//Routes List RightSide*/}
             <ListContainer>
                 <ListCard title={"Routes"} routes={routes} passRouteId={setRouteId} setCurrentToken={setCurrentToken} tokens={tokens}/>
                 {/* <RouteCard title={"Trips"}/> */}

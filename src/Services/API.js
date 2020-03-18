@@ -3,6 +3,7 @@ const URL = "https://gtfs-mdc.herokuapp.com/";
 const URLGetAllRoutes = "https://gtfs-mdc.herokuapp.com/routes/find/all?token=";
 
 const API = {
+    //TODO remove? since deprecated endpoint
     getStatus: async function () {
         await axios.get(URL)
             .then(function (response) {
@@ -23,6 +24,7 @@ const API = {
         let response = await axios.get(`${URLGetAllRoutes}${token}`);
         return response.data;
     },
+    //TODO remove? since deprecated endpoint
     getInfoByRoute: async (id) => {
         try {
             let response = await axios.get(`https://gtfs-mdc.herokuapp.com/getIDs?id=${id}`);
