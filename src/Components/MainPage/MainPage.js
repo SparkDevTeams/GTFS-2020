@@ -16,10 +16,8 @@ const MainPage = () => {
         async function fetchData() {
             let apiTokens = await API.getTokens();
             setTokens(apiTokens);
-            //Todo Fulton might want to change this ?
-            setCurrentToken(apiTokens.Hollywood);
+            setCurrentToken(Object.values(apiTokens)[0]);
         }
-
         fetchData();
     }, []);
 
