@@ -42,12 +42,15 @@ const MainPage = () => {
 
 
     return (
+        // Map LeftSide
         <MainContainer>
             <MapContainer>
                 <MapComponent
                     trips={tripsWithRoutes}
                 />
             </MapContainer>
+
+        {/*//Routes List RightSide*/}
             <ListContainer>
                 <ListCard title={"Routes"} routes={routes} passRouteId={setRouteId} setCurrentToken={setCurrentToken} tokens={tokens}/>
                 {/* <RouteCard title={"Trips"}/> */}
