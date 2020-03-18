@@ -16,6 +16,7 @@ const MainPage = () => {
         async function fetchData() {
             let apiTokens = await API.getTokens();
             setTokens(apiTokens);
+            //Todo - Fulton setting blank token ?
             setCurrentToken(apiTokens[0]);
         }
 
