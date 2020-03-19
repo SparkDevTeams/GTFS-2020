@@ -1,0 +1,44 @@
+.signup-body{
+  font-family: 'Montserrat', sans-serif;
+}
+
+.signup-form {
+  display: flex;
+  flex-direction: column;
+  width: 30%;
+  margin: 0 auto;
+  height: 100%;
+}
+
+.signup-input {
+    display: flex;
+    box-sizing: border-box;
+    width: 100%;
+    margin-bottom: 10px;
+    font-size: 14px;
+    padding: 10px 10px;
+    border-radius: 10px;
+}
+
+.signup-label{
+    display: flex;
+    font-size: 14px;
+    text-align: left;
+    margin-bottom: 10px;
+    margin-top: 20px;
+    
+}
+
+.signup-button[type = "submit"]{
+  background: #fddb92;
+  border-radius: 28px;
+  padding: 5px;
+  width: 50%;
+  height: 40px;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 24px;
+  border: none;
+    align-self: center;
+    font-family: 'Montserrat', 'sans-serif';
+}

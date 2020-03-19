@@ -5,12 +5,13 @@ const Card = styled.div(({width = '100%', height = 'auto', margin = '0px', lg = 
   flex-direction: row;
   flex-wrap: wrap;
   border-radius: 10px;
-  transition: 0.3s;
   width: ${width};
-  height: ${height};
+  min-height: ${height};
   margin: ${margin};
   box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 4px 8px 0 rgba(0, 0, 0, 0.19);
-
+  align-items: center;
+  justify-content: center;
+  background: white;
   @media only screen and (max-width: 1200px){
     width: ${lg}
   }

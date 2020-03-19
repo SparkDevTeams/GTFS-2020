@@ -14,6 +14,7 @@ const GlobalStyles = createGlobalStyle`
 
   html {
     font-size: 62.5%;
+    background-image: linear-gradient(to right, #d299c2 0%, #fef9d7 100%);
   }
 
   body {

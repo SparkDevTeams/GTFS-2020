@@ -11,6 +11,7 @@ const MainPage = () => {
     const [tripsWithRoutes, setTripsWithRoutes] = useState({});
     const [tokens, setTokens] = useState({});
     const [currentToken, setCurrentToken] = useState('');
+    const [points, setPoints] = useState([]);
 
     useEffect(() => {
         async function fetchData() {
@@ -25,19 +26,15 @@ const MainPage = () => {
         async function fetchRoutes() {
             let apiRoutes = await API.getRoutes(currentToken);
             setRoutes(apiRoutes);
+            setPoints(apiRoutes.points);
         }
 
         fetchRoutes();
     }, [currentToken]);
 
-    // useEffect(() => {
-    //     async function getTripsWithRoutes() {
-    //         let trips = await API.getInfoByRoute(routeID);
-    //         setTripsWithRoutes(trips);
-    //     };
-
-    //     getTripsWithRoutes();
-    // }, [routeID]);
+    useEffect(() => {
+        console.log(routeID);
+    }, [routeID]);
 
 
     return (
@@ -46,6 +43,7 @@ const MainPage = () => {
             <MapContainer>
                 <MapComponent
                     trips={tripsWithRoutes}
+                    points={points}
                 />
             </MapContainer>
 

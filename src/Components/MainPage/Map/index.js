@@ -17,8 +17,8 @@ const MapComponent = (props) => {
     // }, [props.trips]);
 
     useEffect(() => {
-        setShape(API.getShape);
-    }, []);
+        console.log(props.points)
+    }, [props.points]);
 
     return (
         <LeafletMap center={[25.7601, -80.3744]} zoom={18}>

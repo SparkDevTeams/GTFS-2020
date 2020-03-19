@@ -26,7 +26,7 @@ const Navbar = (props) => {
           <NavLinks style={linkAnimation}>
             <a href="/">Map</a>
             <a href="/">Account</a>
-            <a href="/">link</a>
+            <a href="/signup">Sign Up</a>
             <a href="/">link </a>
           </NavLinks>
           <BurgerWrapper>
@@ -58,9 +58,9 @@ const NavBar = styled(animated.nav)`
 `;
 
 const FlexContainer = styled.div`
-  max-width: 120rem;
+ 
   display: flex;
-  margin: auto;
+  margin-right: auto;
   padding: 0 2rem;;
   justify-content: space-between;
   height: 5rem;
@@ -69,7 +69,8 @@ const FlexContainer = styled.div`
 const NavLinks = styled(animated.ul)`
   justify-self: end;
   list-style-type: none;
-  margin: auto 0;
+  margin: auto 0; 
+  z-index: 0;
 
   & a {
     color: #dfe6e9;
@@ -81,6 +82,7 @@ const NavLinks = styled(animated.ul)`
     text-decoration: none;
     cursor: pointer;
 
+
     &:hover {
       color: #fdcb6e;
       border-bottom: 1px solid #fdcb6e;
@@ -88,11 +90,13 @@ const NavLinks = styled(animated.ul)`
 
     @media (max-width: 768px) {
       display: none;
+  
     }
   }
 `;
 const BurgerWrapper = styled.div`
-  margin: auto 0;
+  margin-right: auto 0;
+  align-content: right;
 
   @media (min-width: 769px) {
     display: flex;

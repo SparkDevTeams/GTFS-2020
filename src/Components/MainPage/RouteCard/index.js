@@ -25,7 +25,7 @@ const RouteCard = (props) => {
     <CardListContainer>
       {
         routes.map((route, i) =>
-          <Card height="10%" margin="5px" key={route.RouteId}
+          <Card width="90%" height="20%" key={route.RouteId}
             onClick={() => handleRouteClick(route)}>
             {route.Name1}
           </Card>
