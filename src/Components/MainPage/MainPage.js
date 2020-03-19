@@ -19,6 +19,11 @@ const MainPage = () => {
     }
   }, [currentToken])
 
+  /*
+  Onload get tokens,
+  save tokens,
+  set current token to first token
+  */
   useEffect(() => {
     async function fetchData() {
       let apiTokens = await API.getTokens();
