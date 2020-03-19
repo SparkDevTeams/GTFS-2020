@@ -7,9 +7,6 @@ let API = {
 
 const MapComponent = (props) => {
 
-    const [latitude, setLatitude] = useState(25.7574);
-    const [longitude, setLongitude] = useState(-80.3733);
-    const [zoom, setZoom] = useState(17);
     const [shape, setShape] = useState([]);
 
     // useEffect(() => {
@@ -17,8 +14,8 @@ const MapComponent = (props) => {
     // }, [props.trips]);
 
     useEffect(() => {
-        console.log(props.points)
-    }, [props.points]);
+        setShape(props.shape)
+    }, [props.shape]);
 
     return (
         <LeafletMap center={[25.7601, -80.3744]} zoom={18}>
@@ -33,11 +30,11 @@ const MapComponent = (props) => {
                     </div>
                 </Popup>
             </Marker>
-            <Polyline positions={shape}>
+            <Polyline positions={shape?.RoutePath || []} color={shape?.LineColor}>
                 <Popup>
-                    <div>
-                        <h2>really dumb line</h2>
-                    </div>
+                    {shape.RoutePath &&
+                        <div>{shape.Names}</div>
+                    }
                 </Popup>
             </Polyline>
         </LeafletMap>
