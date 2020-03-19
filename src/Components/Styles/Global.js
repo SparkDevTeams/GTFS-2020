@@ -21,6 +21,28 @@ const GlobalStyles = createGlobalStyle`
     box-sizing: border-box;
     font-family: 'Montserrat', sans-serif;
   }
+
+  ::-webkit-scrollbar {
+    width: 12px;
+}
+ 
+/* Track */
+::-webkit-scrollbar-track {
+    -webkit-box-shadow: none; 
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+    background: rgba(0,0,0,0.4); 
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.25); 
+}
+::-webkit-scrollbar-thumb:window-inactive {
+	background: rgba(0,0,0,0.2); 
+}
 `;
 
 export default GlobalStyles;

@@ -1,10 +1,7 @@
 import styled from 'styled-components';
 
 export const CardListContainer = styled.div`
-  display: flex;
   height: 100%;
-  flex-direction: column;
+  width: 100%;
   overflow: scroll;
-  align-items: center;
-  justify-content: space-evenly;
 `;

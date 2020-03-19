@@ -18,7 +18,7 @@ const Routing = () => {
       />
       
       <GlobalStyle />
-      <div style={{ marginTop: '50px' }}>
+      <div style={{ height: "100vh", paddingTop: "50px" }}>
         <Switch>
           <Route path="/signup" component={SignUp} />
           <Route path="/" component={App} />

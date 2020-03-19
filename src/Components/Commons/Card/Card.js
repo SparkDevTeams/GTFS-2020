@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-const Card = styled.div(({width = '100%', height = 'auto', margin = '0px', lg = width, md = lg, sm = md, xs = sm, cursor, hover}) => `
+const Card = styled.div(({width = '100%', height = 'auto', margin = '0px', lg = width, md = lg, sm = md, xs = sm, cursor, hover, selfCenter}) => `
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -12,6 +12,7 @@ const Card = styled.div(({width = '100%', height = 'auto', margin = '0px', lg = 
   align-items: center;
   justify-content: center;
   background: white;
+  ${selfCenter && 'margin: 10px auto;'}
   @media only screen and (max-width: 1200px){
     width: ${lg}
   }
@@ -29,7 +30,7 @@ const Card = styled.div(({width = '100%', height = 'auto', margin = '0px', lg = 
   }
 
   &:hover {
-    cursor: ${cursor}
+    cursor: ${cursor};
     ${hover && 'box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);'}
   }
 `
