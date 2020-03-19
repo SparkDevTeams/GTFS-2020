@@ -28,6 +28,3 @@ export default function SignUp() {
     </form>
   );
 }
-
-const rootElement = document.getElementById("root");
-ReactDOM.render(<SignUp />, rootElement);
