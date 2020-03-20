@@ -31,6 +31,7 @@
 
 .signup-button[type = "submit"]{
   background: #998DA0;
+  color: white;
   border-radius: 28px;
   padding: 5px;
   width: 50%;

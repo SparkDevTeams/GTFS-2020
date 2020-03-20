@@ -25,15 +25,16 @@ export default function SignUp() {
       <input
           className="signup-input"
           name="userName"
-          ref={register({ required: true, minLength: 6 })}
+          ref={register({ required: true, minLength: 6, maxlength: 255})}
       />
       {errors.userName && <p>Username field is required & Length needs to be greater than 5</p>}
 
       <label className="signup-label">Password</label>
       <input
+        type="password"
         className="signup-input"
         name="password"
-        ref={register({ required: true, minLength: 8 })}
+        ref={register({ required: true, minLength: 8, maxlength: 255})}
       />
       {errors.password && <p>Password field is required & Length needs to be greater than 7</p>}
 
