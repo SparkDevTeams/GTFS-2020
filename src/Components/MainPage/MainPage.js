@@ -33,6 +33,9 @@ const MainPage = () => {
     fetchData();
   }, []);
 
+  /*
+  Runs on load and if current token changes
+   */
   useEffect(() => {
     async function fetchRoutes() {
       let apiRoutes = await API.getRoutes(currentToken);
