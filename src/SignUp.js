@@ -19,9 +19,9 @@ export default function SignUp() {
     <input
         className="signup-input"
         name="email"
-        ref={register({ required: true, minLength: 6 })}
+        ref={register({ required: true, pattern: /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/ })}
     />
-    {errors.userName && <p>Username field is required</p>}
+    {errors.email && <p>Email field is invalid</p>}
 
       <label className="signup-label">User Name</label>
       <input
