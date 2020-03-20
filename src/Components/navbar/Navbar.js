@@ -85,7 +85,7 @@ const NavLinks = styled(animated.ul)`
 
     &:hover {
       color: #fdcb6e;
-      border-bottom: 1px solid #fdcb6e;
+      border-bottom: 1px solid #998DA0;
     }
 
     @media (max-width: 768px) {
