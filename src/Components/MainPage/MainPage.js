@@ -34,7 +34,9 @@ const MainPage = () => {
   }, []);
 
   /*
-  Runs on load and if current token changes
+  Fetches routes onLoad &
+  Fetch routes per token passed
+  Rerender component when CurrentToken Changes
    */
   useEffect(() => {
     async function fetchRoutes() {

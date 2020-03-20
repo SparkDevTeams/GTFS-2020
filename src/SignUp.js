@@ -32,10 +32,10 @@ export default function SignUp() {
       <label className="signup-label">Password</label>
       <input
         className="signup-input"
-        name="passWord"
+        name="password"
         ref={register({ required: true, minLength: 8 })}
       />
-      {errors.passWord && <p>Password field is required & Length needs to be greater than 7</p>}
+      {errors.password && <p>Password field is required & Length needs to be greater than 7</p>}
 
       <input className="signup-button" type="submit" value="Create Account"/>
     </form>
