@@ -14,6 +14,15 @@ export default function SignUp() {
 
   return (
     <form className="signup-form" onSubmit={handleSubmit(onSubmit)}>
+
+    <label className="signup-label">Email</label>
+    <input
+        className="signup-input"
+        name="email"
+        ref={register({ required: true, minLength: 6 })}
+    />
+    {errors.userName && <p>Username field is required</p>}
+
       <label className="signup-label">User Name</label>
       <input
           className="signup-input"
@@ -21,6 +30,7 @@ export default function SignUp() {
           ref={register({ required: true, minLength: 6 })}
       />
       {errors.userName && <p>Username field is required</p>}
+
       <label className="signup-label">Password</label>
       <input
         className="signup-input"
@@ -28,6 +38,7 @@ export default function SignUp() {
         ref={register({ required: true, minLength: 8 })}
       />
       {errors.passWord && <p>Password field is required</p>}
+
       <input className="signup-button" type="submit" value="Create Account"/>
     </form>
   );
