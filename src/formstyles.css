@@ -42,3 +42,8 @@
     align-self: center;
     font-family: 'Montserrat', 'sans-serif';
 }
+
+p::before {
+    display: inline;
+    content: "⚠ ";
+}

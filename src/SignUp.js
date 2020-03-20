@@ -14,16 +14,21 @@ export default function SignUp() {
 
   return (
     <form className="signup-form" onSubmit={handleSubmit(onSubmit)}>
-      <label className="signup-label">Username</label>
-      <input className="signup-input" name="example" defaultValue="test" ref={register} />
+      <label className="signup-label">User Name</label>
+      <input
+          className="signup-input"
+          name="userName"
+          ref={register({ required: true, maxLength: 10 })}
+      />
+      {errors.userName && <p>Username field is required</p>}
       <label className="signup-label">Password</label>
       <input
         className="signup-input"
-        name="exampleRequired"
+        name="passWord"
         ref={register({ required: true, maxLength: 10 })}
       />
-      {errors.exampleRequired && <p>This field is required</p>}
-      <input className="signup-button" type="submit" />
+      {errors.passWord && <p>Password field is required</p>}
+      <input className="signup-button" type="submit" value="Create Account"/>
     </form>
   );
 }
