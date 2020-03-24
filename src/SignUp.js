@@ -1,13 +1,14 @@
 import React from 'react'
-import { useForm } from 'react-hook-form';
+import {useForm} from 'react-hook-form';
 import "./formstyles.css";
-
+import API from './Services/API.js';
 
 
 export default function SignUp() {
   const { register, handleSubmit, watch, errors } = useForm();
   const onSubmit = data => {
-    console.log(data);
+    const {password, email, username} = data;
+    console.log(API.registerUser(username, password, email));;;
   }; 
 
   return (
