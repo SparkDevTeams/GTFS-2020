@@ -13,6 +13,10 @@ const API = {
     getShapeByRoute: async function (token, routeId) {
         let response = await axios.get(`${URL}/shapes/find?token=${token}&id=${routeId}`);
         return response.data;
+    },
+    getStopsByRoute: async function (routeId) {
+        let response = await axios.get(`${URL}/stops/find?id=${routeId}`);
+        return response.data;
     }
 };
 

@@ -12,10 +12,11 @@ const MainPage = () => {
   const [currentToken, setCurrentToken] = useState("");
   const [points, setPoints] = useState([]);
 
-  const getShapes = useCallback(async (routeId) => {
+  const getDataPerRoute = useCallback(async (routeId) => {
     if(routeId){
       let shape = await API.getShapeByRoute(currentToken, routeId);
-      setShape(shape);
+      let stops = await API.getStopsByRoute(routeId);
+      setShape({...shape, stops});
     }
   }, [currentToken])
 
@@ -49,8 +50,8 @@ const MainPage = () => {
   }, [currentToken]);
 
   useEffect(() => {
-    getShapes(routeId);
-  }, [routeId, getShapes]);
+    getDataPerRoute(routeId);
+  }, [routeId, getDataPerRoute]);
 
   return (
     // Map LeftSide
