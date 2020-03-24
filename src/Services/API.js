@@ -13,7 +13,11 @@ const API = {
     getShapeByRoute: async function (token, routeId) {
         let response = await axios.get(`${URL}/shapes/find?token=${token}&id=${routeId}`);
         return response.data;
+    },
+    registerUser: async (email, username, password) => {
+
     }
+
 };
 
 export default API;
