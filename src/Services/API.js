@@ -14,10 +14,10 @@ const API = {
         let response = await axios.get(`${URL}/shapes/find?token=${token}&id=${routeId}`);
         return response.data;
     },
-    registerUser: async (email, username, password) => {
-
+    getStopsByRoute: async function (routeId) {
+        let response = await axios.get(`${URL}/stops/find?id=${routeId}`);
+        return response.data;
     }
-
 };
 
 export default API;
