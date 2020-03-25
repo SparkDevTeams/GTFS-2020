@@ -5,11 +5,36 @@ import API from './Services/API.js';
 import ErrorMessage from "./ErrorMessage";
 
 export default function SignUp() {
-  const { register, handleSubmit, watch, errors } = useForm();
+  const
+  {
+    register,
+    handleSubmit,
+    watch,
+    errors,
+    setError,
+    clearError,
+    formState: { isSubmitting }
+  } = useForm();
+
+  //TODO IN progress
   const onSubmit = data => {
+    alert(JSON.stringify(data));
     const {password, email, username} = data;
-    console.log(API.registerUser(username, password, email));
-  }; 
+    validate(data);
+  };
+
+  //TODO IN progress
+  const validate = async ({username, password, email}) => {
+    let response = await API.registerUser(username, password, email);
+    console.log(response);
+    if (value !== "bill")
+    {
+      setError("usernameTaken", "validate");
+    }
+    else {
+      clearError("username");
+    }
+  };
 
   return (
     <form className="signup-form" onSubmit={handleSubmit(onSubmit)}>
@@ -39,7 +64,7 @@ export default function SignUp() {
       />
       <ErrorMessage error={errors.password}/>
 
-      <input className="signup-button" type="submit" value="Create Account"/>
+      <input disabled={isSubmitting} className="signup-button" type="submit" value="Create Account"/>
     </form>
   );
 }
