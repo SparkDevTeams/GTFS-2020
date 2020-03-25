@@ -8,7 +8,7 @@ export default function SignUp() {
   const { register, handleSubmit, watch, errors } = useForm();
   const onSubmit = data => {
     const {password, email, username} = data;
-    console.log(API.registerUser(username, password, email));;;
+    console.log(API.registerUser(username, password, email));
   }; 
 
   return (
