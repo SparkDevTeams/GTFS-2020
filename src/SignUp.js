@@ -27,7 +27,7 @@ export default function SignUp() {
   const validate = async ({username, password, email}) => {
     let response = await API.registerUser(username, password, email);
     console.log(response);
-    if (value !== "bill")
+    if (response.status !== 200)
     {
       setError("usernameTaken", "validate");
     }
