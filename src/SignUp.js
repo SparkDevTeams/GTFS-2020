@@ -3,6 +3,7 @@ import {useForm} from 'react-hook-form';
 import "./formstyles.css";
 import API from './Services/API.js';
 import ErrorMessage from "./ErrorMessage";
+import { Redirect, Link} from "react-router-dom";
 
 export default function SignUp() {
   const
@@ -16,26 +17,27 @@ export default function SignUp() {
     formState: { isSubmitting }
   } = useForm();
 
-  //TODO IN progress
   const onSubmit = data => {
-    alert(JSON.stringify(data));
     const {pwd, email, user} = data;
     validate(data);
   };
 
-  //TODO IN progress
-  const validate = async (data) => {
-    let response = await API.registerUser(data);
+  //TODO figure out redirrect
+  const validate = async ({user, pwd, email}) => {
+    let response = await API.registerUser(user, pwd, email);
     console.log(response);
-    if (response.status !== 200)
+    if(response == undefined)
     {
-      console.log("TAKEN", "SHIT WAZ TAKEN HOMEBOI")
+      console.log("Username WAZ TAKEN")
       setError("usernameTaken", "validate");
+
+      {alert("Username was taken!")}
     }
     else
-      {
-      console.log("NOT-TAKEN", "SHIT WAZ NUT TAKEN")
+    {
+      console.log("Username WAZ NOT TAKEN HOMEBOI")
       clearError("user");
+      alert("Succesfuly created an account!");
     }
   };
 

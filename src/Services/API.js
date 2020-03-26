@@ -18,9 +18,14 @@ const API = {
         let response = await axios.get(`${URL}/stops/find?id=${routeId}`);
         return response.data;
     },
-    registerUser: async function (data) {
+    registerUser: async function (username, password, email) {
         // let response = await axios.post(`${URL}/register?user=${username}&pwd=${password}&email=${email}`);
-        let response = await axios.post(`${URL}/register`,data);
+        let response = await axios.post(`${URL}/register?user=${username}&pwd=${password}&email=${email}`)
+            .catch(function (error)
+            {
+            console.log("This is the error log:", error)
+            return "This username is taken!"
+        });
         return response.data;
     }
 };
