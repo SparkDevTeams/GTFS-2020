@@ -3,9 +3,10 @@ import {useForm} from 'react-hook-form';
 import "./formstyles.css";
 import API from './Services/API.js';
 import ErrorMessage from "./ErrorMessage";
-import { Redirect, Link} from "react-router-dom";
+import { useHistory } from "react-router-dom";
 
 export default function SignUp() {
+  let history = useHistory();
   const
   {
     register,
@@ -25,19 +26,23 @@ export default function SignUp() {
   //TODO figure out redirrect
   const validate = async ({user, pwd, email}) => {
     let response = await API.registerUser(user, pwd, email);
-    console.log(response);
+
+    //Username was taken
     if(response == undefined)
     {
-      console.log("Username WAZ TAKEN")
       setError("usernameTaken", "validate");
-
-      {alert("Username was taken!")}
+      alert("Username was taken! - Try a new one");
     }
+    /**
+     * Username was not taken,
+     * Gets registered in backend
+     * Redirects to Home page('/')
+     */
     else
     {
-      console.log("Username WAZ NOT TAKEN HOMEBOI")
       clearError("user");
       alert("Succesfuly created an account!");
+      history.push("/");
     }
   };
 
