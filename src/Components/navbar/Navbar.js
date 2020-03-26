@@ -26,7 +26,7 @@ const Navbar = (props) => {
          
           <NavLinks style={linkAnimation}>
             <Link to="/">Map</Link>
-            <Link to="/">Account</Link>
+            <Link to="/profile">Account</Link>
             <Link to="/signup">Sign Up</Link>
             <Link to="/">link </Link>
           </NavLinks>
