@@ -1,8 +1,8 @@
 import styled from 'styled-components';
 
-const Card = styled.div(({width = '100%', height = 'auto', margin = '0px', lg = width, md = lg, sm = md, xs = sm, cursor, hover, selfCenter}) => `
+const Card = styled.div(({width = '100%', height = 'auto', margin = '0px', lg = width, md = lg, sm = md, xs = sm, cursor, hover, selfCenter, direction = 'row'}) => `
   display: flex;
-  flex-direction: row;
+  flex-direction: ${direction};
   flex-wrap: wrap;
   border-radius: 10px;
   width: ${width};
