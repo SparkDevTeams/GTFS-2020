@@ -19,7 +19,7 @@ const API = {
         return response.data;
     },
     registerUser: async function (username, password, email) {
-        let response = await axios.post(`${URL}/register?user=${username}&pwd=${password}&${email}`);
+        let response = await axios.post(`${URL}/register?user=${username}&pwd=${password}&email=${email}`);
         return response.data;
     }
 };

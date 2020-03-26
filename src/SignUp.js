@@ -19,19 +19,22 @@ export default function SignUp() {
   //TODO IN progress
   const onSubmit = data => {
     alert(JSON.stringify(data));
-    const {password, email, username} = data;
+    const {password, email, userName} = data;
     validate(data);
   };
 
   //TODO IN progress
-  const validate = async ({username, password, email}) => {
-    let response = await API.registerUser(username, password, email);
+  const validate = async ({userName, password, email}) => {
+    let response = await API.registerUser(userName, password, email);
     console.log(response);
     if (response.status !== 200)
     {
+      console.log("TAKEN", "SHIT WAZ TAKEN HOMEBOI")
       setError("usernameTaken", "validate");
     }
-    else {
+    else
+      {
+      console.log("NOT-TAKEN", "SHIT WAZ NUT TAKEN")
       clearError("username");
     }
   };
