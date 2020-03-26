@@ -23,7 +23,6 @@ export default function SignUp() {
     validate(data);
   };
 
-  //TODO figure out redirrect
   const validate = async ({user, pwd, email}) => {
     let response = await API.registerUser(user, pwd, email);
 
