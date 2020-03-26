@@ -22,7 +22,6 @@ const API = {
         let response = await axios.post(`${URL}/register?user=${username}&pwd=${password}&email=${email}`)
             .catch(function (error)
             {
-            console.log("This is the error log:", error)
             return "This username is taken!"
         });
         return response.data;
