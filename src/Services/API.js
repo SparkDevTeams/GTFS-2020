@@ -18,8 +18,9 @@ const API = {
         let response = await axios.get(`${URL}/stops/find?id=${routeId}`);
         return response.data;
     },
-    registerUser: async function (username, password, email) {
-        let response = await axios.post(`${URL}/register?user=${username}&pwd=${password}&email=${email}`);
+    registerUser: async function (data) {
+        // let response = await axios.post(`${URL}/register?user=${username}&pwd=${password}&email=${email}`);
+        let response = await axios.post(`${URL}/register`,data);
         return response.data;
     }
 };

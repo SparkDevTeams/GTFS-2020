@@ -19,13 +19,13 @@ export default function SignUp() {
   //TODO IN progress
   const onSubmit = data => {
     alert(JSON.stringify(data));
-    const {password, email, userName} = data;
+    const {password, email, username} = data;
     validate(data);
   };
 
   //TODO IN progress
-  const validate = async ({userName, password, email}) => {
-    let response = await API.registerUser(userName, password, email);
+  const validate = async (data) => {
+    let response = await API.registerUser(data);
     console.log(response);
     if (response.status !== 200)
     {
@@ -53,10 +53,10 @@ export default function SignUp() {
       <label className="signup-label">User Name</label>
       <input
           className="signup-input"
-          name="userName"
+          name="username"
           ref={register({ required: true, minLength: 6, maxlength: 100})}
       />
-      <ErrorMessage error={errors.userName}/>
+      <ErrorMessage error={errors.username}/>
 
       <label className="signup-label">Password</label>
       <input
