@@ -19,7 +19,7 @@ export default function SignUp() {
   //TODO IN progress
   const onSubmit = data => {
     alert(JSON.stringify(data));
-    const {password, email, username} = data;
+    const {pwd, email, user} = data;
     validate(data);
   };
 
@@ -35,7 +35,7 @@ export default function SignUp() {
     else
       {
       console.log("NOT-TAKEN", "SHIT WAZ NUT TAKEN")
-      clearError("username");
+      clearError("user");
     }
   };
 
@@ -53,19 +53,19 @@ export default function SignUp() {
       <label className="signup-label">User Name</label>
       <input
           className="signup-input"
-          name="username"
+          name="user"
           ref={register({ required: true, minLength: 6, maxlength: 100})}
       />
-      <ErrorMessage error={errors.username}/>
+      <ErrorMessage error={errors.user}/>
 
       <label className="signup-label">Password</label>
       <input
         type="password"
         className="signup-input"
-        name="password"
+        name="pwd"
         ref={register({ required: true, minLength: 8, maxlength: 100})}
       />
-      <ErrorMessage error={errors.password}/>
+      <ErrorMessage error={errors.pwd}/>
 
       <input disabled={isSubmitting} className="signup-button" type="submit" value="Create Account"/>
     </form>
