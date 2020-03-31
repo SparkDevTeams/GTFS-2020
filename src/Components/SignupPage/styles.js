@@ -29,6 +29,7 @@ export const TextLabel = styled.label`
   font-size: 14px;
   line-height: 17px;
   color: #797979;
+  margin-bottom: 5px;
 `;
 
 export const InputButton = styled.input`
