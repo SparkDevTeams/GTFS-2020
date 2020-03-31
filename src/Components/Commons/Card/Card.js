@@ -4,11 +4,11 @@ const Card = styled.div(({width = '100%', height = 'auto', margin = '0px', lg = 
   display: flex;
   flex-direction: ${direction};
   flex-wrap: wrap;
-  border-radius: 10px;
   width: ${width};
   min-height: ${height};
   margin: ${margin};
-  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 4px 8px 0 rgba(0, 0, 0, 0.19);
+  box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 5px;
   align-items: center;
   justify-content: center;
   background: white;
