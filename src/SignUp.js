@@ -1,9 +1,10 @@
-import React from 'react'
+import React, {useState} from 'react'
 import {useForm} from 'react-hook-form';
 import "./formstyles.css";
 import API from './Services/API.js';
 import ErrorMessage from "./ErrorMessage";
 import { useHistory } from "react-router-dom";
+import Modal from "./Modal";
 
 export default function SignUp() {
   let history = useHistory();
@@ -17,6 +18,8 @@ export default function SignUp() {
     clearError,
     formState: { isSubmitting }
   } = useForm();
+  const [show, setShow] = useState(false);
+  const [modalText, setmodalText] = useState("");
 
   const onSubmit = data => {
     const {pwd, email, user} = data;
@@ -30,7 +33,11 @@ export default function SignUp() {
     if(response == undefined)
     {
       setError("usernameTaken", "validate");
-      alert("Username was taken! - Try a new one");
+      // alert("Username was taken! - Try a new one");
+      setmodalText("Username was taken! - Try a new one")
+      //TODO display modal
+      showModal();
+      // <Modal show={show}/>
     }
     /**
      * Username was not taken,
@@ -40,14 +47,24 @@ export default function SignUp() {
     else
     {
       clearError("user");
-      alert("Succesfuly created an account!");
+      // alert("Succesfuly created an account!");
+
       history.push("/");
+      //TODO display modal
+      setmodalText("Succesfuly created an account!")
+      showModal();
+      // <Modal show={show}/>
     }
   };
 
-  return (
-    <form className="signup-form" onSubmit={handleSubmit(onSubmit)}>
+  function showModal(e){
+    setShow(prev => !prev);
+  }
 
+  return (
+
+    <form className="signup-form" onSubmit={handleSubmit(onSubmit)}>
+    <Modal onClose={showModal} show={show} message={modalText}/>
     <label className="signup-label">Email</label>
     <input
         className="signup-input"
@@ -75,5 +92,6 @@ export default function SignUp() {
 
       <input disabled={isSubmitting} className="signup-button" type="submit" value="Create Account"/>
     </form>
+
   );
 }
