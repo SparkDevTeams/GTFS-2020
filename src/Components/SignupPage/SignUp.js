@@ -4,9 +4,12 @@ import API from "../../Services/API.js";
 import { useHistory } from "react-router-dom";
 import { TextField, Form, FormContainer, TextLabel, InputButton, PageTitle } from "./styles";
 import Card from "../Commons/Card/Card.js";
+import Modal from "../Commons/Modal/Modal";
 
 export default function SignUp() {
   let history = useHistory();
+  const [show, setShow] = useState(false);
+  const [modalText, setmodalText] = useState("");
   const {
     register,
     handleSubmit,
@@ -20,6 +23,10 @@ export default function SignUp() {
   const onSubmit = data => {
     validate(data);
   };
+
+  function showModal(){
+    setShow(prev => !prev);
+  }
 
   function ErrorMessage({ error }) {
     if (error) {
@@ -48,6 +55,8 @@ export default function SignUp() {
     //Username was taken
     if (response === undefined) {
       setError("usernameTaken", "validate");
+      setmodalText("Username was taken! - Try a new one");
+      showModal();
     } else {
     /**
      * Username was not taken,
@@ -55,13 +64,15 @@ export default function SignUp() {
      * Redirects to Home page('/')
      */
       clearError("user");
-
-      history.push("/");
+      setmodalText("Succesfuly created an account! Will Redirect in 5 seconds.")
+      showModal();
+      setTimeout(function() { history.push("/");; }, 5000);
     }
   };
 
   return (
     <FormContainer>
+      <Modal onClose={showModal} show={show} message={modalText}/>
       <Card width="50%" xs="95%">
         <Form className="signup-form" onSubmit={handleSubmit(onSubmit)}>
           <PageTitle>Sign up</PageTitle>

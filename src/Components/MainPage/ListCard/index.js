@@ -16,7 +16,6 @@ const ListCard = (props) => {
                 {Object.entries(props.tokens).map((token, idx) =>  <option key={idx} value={token[1]}>{token[0]}</option>)}
             </select>
             <RouteCard Routes={props.routes} callBack={getRouteID}/>
-            {/*  TODO add trips - don't know how :D*/}
         </Container>
     )
 };
