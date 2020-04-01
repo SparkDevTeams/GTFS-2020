@@ -48,11 +48,10 @@ export default function SignUp() {
     {
       clearError("user");
       // alert("Succesfuly created an account!");
-
-      history.push("/");
       //TODO display modal
       setmodalText("Succesfuly created an account!")
       showModal();
+      history.push("/");
       // <Modal show={show}/>
     }
   };
