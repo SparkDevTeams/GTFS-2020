@@ -22,7 +22,7 @@ const Wrapper = styled.div`
   display: flex;
 
   & span {
-    background: #998DA0;
+    background: #fdcb6e;
     display: flex;
     position: relative;
     width: 3.5rem;
