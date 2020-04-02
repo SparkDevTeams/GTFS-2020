@@ -1,4 +1,5 @@
 import React from "react";
+import Card from "../Card/Card";
 import "./Modal.css";
 export default class Modal extends React.Component {
     onClose = e => {
@@ -9,16 +10,16 @@ export default class Modal extends React.Component {
             return null;
         }
         return (
-            <div className="modal" id="modal">
+            <Card className="modal" id="modal">
                 <h2>Notice!</h2>
                 <div className="content">{this.props.message}</div>
                 <div className="actions">
 
                     <button className="toggle-button" onClick={this.onClose}>
-                        close
+                        Close
                     </button>
                 </div>
-            </div>
+            </Card>
         );
     }
 }
