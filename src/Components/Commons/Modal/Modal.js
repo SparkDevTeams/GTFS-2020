@@ -1,25 +1,24 @@
 import React from "react";
 import Card from "../Card/Card";
-import "./Modal.css";
-export default class Modal extends React.Component {
-    onClose = e => {
-        this.props.onClose && this.props.onClose(e);
-    };
-    render() {
-        if (!this.props.show) {
-            return null;
-        }
-        return (
-            <Card className="modal" id="modal">
-                <h2>Notice!</h2>
-                <div className="content">{this.props.message}</div>
-                <div className="actions">
+import { ModalBackground } from "./styles";
 
-                    <button className="toggle-button" onClick={this.onClose}>
-                        Close
-                    </button>
-                </div>
-            </Card>
-        );
-    }
-}
+const Modal = props => {
+
+  const onClose = e => props.onClose?.(e);
+
+  return (
+    <ModalBackground show={props.show}>
+      <Card width="25%" height="25%" direction='column'>
+        <h2>Notice!</h2>
+        <div className="content">{props.message}</div>
+        <div className="actions">
+          <button className="toggle-button" onClick={onClose}>
+            Close
+          </button>
+        </div>
+      </Card>
+    </ModalBackground>
+  );
+};
+
+export default Modal;
