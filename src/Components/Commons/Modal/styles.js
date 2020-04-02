@@ -12,3 +12,8 @@ export const ModalBackground = styled.div`
   justify-content: center;
   align-items: center;
 `;
+
+
+export const CardTitle = styled.h1`
+    text-align: left;
+`;

@@ -8,8 +8,9 @@ import Modal from "../Commons/Modal/Modal";
 
 export default function SignUp() {
   let history = useHistory();
-  const [show, setShow] = useState(false);
+  const [show, setShow] = useState(true);
   const [modalText, setmodalText] = useState("");
+  const [modalTitle, setmodalTitle] = useState("");
   const {
     register,
     handleSubmit,
@@ -55,7 +56,8 @@ export default function SignUp() {
     //Username was taken
     if (response === undefined) {
       setError("usernameTaken", "validate");
-      setmodalText("Username was taken! - Try a new one");
+      setmodalText("There was an error signing up with the given information \n \n Email is already in use");
+      setmodalTitle("Sign up Error")
       showModal();
     } else {
     /**
@@ -72,7 +74,7 @@ export default function SignUp() {
 
   return (
     <FormContainer>
-      <Modal onClose={showModal} show={show} message={modalText}/>
+      <Modal onClose={showModal} title={modalTitle} show={show} message={modalText}/>
       <Card width="50%" xs="95%">
         <Form className="signup-form" onSubmit={handleSubmit(onSubmit)}>
           <PageTitle>Sign up</PageTitle>
