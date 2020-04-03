@@ -8,7 +8,7 @@ import Modal from "../Commons/Modal/Modal";
 
 export default function SignUp() {
   let history = useHistory();
-  const [show, setShow] = useState(true);
+  const [show, setShow] = useState(false);
   const [modalText, setmodalText] = useState("");
   const [modalTitle, setmodalTitle] = useState("");
   const {
@@ -56,7 +56,7 @@ export default function SignUp() {
     //Username was taken
     if (response === undefined) {
       setError("usernameTaken", "validate");
-      setmodalText("There was an error signing up with the given information \n \n Email is already in use");
+      setmodalText("There was an error signing up with the given information \n \n Email is already in use \n \n");
       setmodalTitle("Sign up Error")
       showModal();
     } else {

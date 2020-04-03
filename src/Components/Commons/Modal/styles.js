@@ -13,7 +13,16 @@ export const ModalBackground = styled.div`
   align-items: center;
 `;
 
-
 export const CardTitle = styled.h1`
+    position: absolute;
+    top: 8px;
+    left: 16px;
     text-align: left;
+`;
+
+export const CardDescription = styled.pre`
+    font-size: medium;
+    white-space: pre-line;
+    text-align: center;
+    font-weight: bold;
 `;

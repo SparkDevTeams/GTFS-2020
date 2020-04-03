@@ -1,18 +1,20 @@
 import React from "react";
 import Card from "../Card/Card";
-import { CardTitle, ModalBackground } from "./styles";
+import {CardDescription, CardTitle, ModalBackground} from "./styles";
 import {Form, InputButton} from "../../SignupPage/styles";
 
 const Modal = props => {
 
-  const onClose = e => props.onClose?.(e);
+  const onClose = e => {
+    return props.onClose?.(e)
+  };
 
   return (
     <ModalBackground show={props.show}>
-      <Card width="25%" height="25%" direction='column'>
+      <Card position="relative" width="25%" height="25%" direction='column'>
         {/*Todo align to top left*/}
         <CardTitle>{props.title}</CardTitle>
-        <pre className="content">{props.message}</pre>
+        <CardDescription className="content">{props.message}</CardDescription>
         <div className="actions">
           <InputButton
               className="signup-button"
