@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-const Card = styled.div(({width = '100%', height = 'auto', minHeight = height, margin = '0px', lg = width, md = lg, sm = md, xs = sm, cursor, hover, selfCenter, direction = 'row'}) => `
+const Card = styled.div(({width = '100%', height = 'auto', minHeight = height, margin = '0px',padding = '0px', lg = width, md = lg, sm = md, xs = sm, cursor, hover, selfCenter, direction = 'row'}) => `
   display: flex;
   flex-direction: ${direction};
   flex-wrap: wrap;
@@ -8,6 +8,7 @@ const Card = styled.div(({width = '100%', height = 'auto', minHeight = height, m
   height: ${height};
   min-height: ${minHeight};
   margin: ${margin};
+  padding: ${padding};
   box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.25);
   border-radius: 5px;
   align-items: center;

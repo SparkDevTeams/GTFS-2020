@@ -26,3 +26,15 @@ export const CardDescription = styled.pre`
     text-align: center;
     font-weight: bold;
 `;
+
+export const ModalText = styled.p`
+ font-family: Montserrat;
+ font-style: normal;
+ font-weight: normal;
+ font-size: 18px;
+ line-height: 22px;
+ text-align: center;
+ white-space: pre-line;
+ width: 300px;
+
+ `;

@@ -40,6 +40,7 @@ export const InputButton = styled.input`
   height: 35px;
   border-width: 0;
   align-self: center;
+
 `;
 
 export const PageTitle = styled.p`
@@ -51,3 +52,4 @@ export const PageTitle = styled.p`
   align-self: start;
   margin-bottom: 25px;
 `;
+

@@ -1,6 +1,6 @@
 import React from "react";
 import Card from "../Card/Card";
-import {CardDescription, CardTitle, ModalBackground} from "./styles";
+import {CardDescription, CardTitle, ModalBackground, ModalText} from "./styles";
 import {Form, InputButton} from "../../SignupPage/styles";
 
 const Modal = props => {
@@ -11,10 +11,10 @@ const Modal = props => {
 
   return (
     <ModalBackground show={props.show}>
-      <Card position="relative" width="25%" height="25%" direction='column'>
+      <Card position="relative" width="558px" height="325px" direction='column'>
         {/*Todo align to top left*/}
         <CardTitle>{props.title}</CardTitle>
-        <CardDescription className="content">{props.message}</CardDescription>
+        <ModalText className="content">{props.message}</ModalText>
         <div className="actions">
           <InputButton
               className="signup-button"
