@@ -1,45 +1,38 @@
 import styled from 'styled-components';
 
+export const PageContainer = styled.div`
+width: 100%;
+display: flex;
+`;
+
+
 export const ProfileContainer = styled.div`
 
  justify-content: center;
  align-items: center;
  font-size: 16px;
-
-/* Edit Profile Form */
-
-position: absolute;
-width: 862px;
-height: 687px;
-left: 77px;
-top: 149px;
-
-
+display: flex;
+width: 60%;
+margin-top: 5%;
 `;
 
 export const SideContainer = styled.div`
-position: absolute;
-width: 396px;
-height: 439px;
-left: 1003px;
-top: 149px;
-
-background: #FFFFFF;
-box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.25);
-border-radius: 5px;
+display: flex;
+align-items: center;
+font-size: 16px;
+justify-content: center;
+width: 30%;
+margin-top: 5%;
 `;
 
 export const ProfileImage = styled.img`
-  // height: 100px;
-  // width: 100px;
- border-radius: 50%;
-  // position: absolute;
-width: 125px;
-height: 125px;
-left: 1138px;
-top: 210px;
 
-background: url(Kayashecktbh.jpg);
+ border-radius: 60%;
+justify-content: center;
+display: flex;
+align-items: center;
+height: 128px;
+width: 128px;
 border: 4px solid #EAEAEA;
 box-sizing: border-box;
 `;
@@ -67,4 +60,12 @@ width:  100%;
 border: 1px solid rgba(48, 48, 48, 0.25);
 border-radius: 5px;
 margin-bottom: 20px;
+resize: none;
 `;
+
+export const ProfileDescription = styled.p`
+padding-top: 20px;
+font-size: 14px;
+
+`;
+

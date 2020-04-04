@@ -20,6 +20,11 @@ const MainPage = () => {
     }
   }, [currentToken])
 
+  /*
+  Onload get tokens,
+  save tokens,
+  set current token to first token
+  */
   useEffect(() => {
     async function fetchData() {
       let apiTokens = await API.getTokens();
@@ -29,6 +34,11 @@ const MainPage = () => {
     fetchData();
   }, []);
 
+  /*
+  Fetches routes onLoad &
+  Fetch routes per token passed
+  Rerender component when CurrentToken Changes
+   */
   useEffect(() => {
     async function fetchRoutes() {
       let apiRoutes = await API.getRoutes(currentToken);
