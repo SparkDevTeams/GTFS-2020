@@ -1,28 +1,78 @@
-import React from 'react';
-import { MainContainer, MapContainer, ListContainer } from './styles';
-import { Map as LeafletMap, TileLayer, Marker, Popup } from 'react-leaflet';
+import React, { useEffect, useState, useCallback } from "react";
+import { ListContainer, MainContainer, MapContainer } from "./styles";
+import ListCard from "./ListCard";
+import API from "../../Services/API";
+import MapComponent from "./Map";
 
 const MainPage = () => {
+  const [routeId, setRouteId] = useState("");
+  const [routes, setRoutes] = useState([]);
+  const [shape, setShape] = useState({});
+  const [tokens, setTokens] = useState({});
+  const [currentToken, setCurrentToken] = useState("");
+  const [points, setPoints] = useState([]);
+
+  const getDataPerRoute = useCallback(async (routeId) => {
+    if(routeId){
+      let shape = await API.getShapeByRoute(currentToken, routeId);
+      let stops = await API.getStopsByRoute(routeId);
+      setShape({...shape, stops});
+    }
+  }, [currentToken])
+
+  /*
+  Onload get tokens,
+  save tokens,
+  set current token to first token
+  */
+  useEffect(() => {
+    async function fetchData() {
+      let apiTokens = await API.getTokens();
+      setTokens(apiTokens);
+      setCurrentToken(Object.values(apiTokens)[0]);
+    }
+    fetchData();
+  }, []);
+
+  /*
+  Fetches routes onLoad &
+  Fetch routes per token passed
+  Rerender component when CurrentToken Changes
+   */
+  useEffect(() => {
+    async function fetchRoutes() {
+      let apiRoutes = await API.getRoutes(currentToken);
+      setRoutes(apiRoutes);
+      setPoints(apiRoutes.points);
+    }
+
+    fetchRoutes();
+  }, [currentToken]);
+
+  useEffect(() => {
+    getDataPerRoute(routeId);
+  }, [routeId, getDataPerRoute]);
+
   return (
+    // Map LeftSide
     <MainContainer>
       <MapContainer>
-        <LeafletMap center={[25.7601, -80.3744]} zoom={18}>
-          <TileLayer
-            attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-            url='https://{s}.tile.osm.org/{z}/{x}/{y}.png'
-          />
-          <Marker position={[25.7601, -80.3744]}>
-            <Popup>
-              <div>
-                <h2>FIU Parking Garage 6</h2>
-              </div>
-            </Popup>
-          </Marker>
-        </LeafletMap>
+        <MapComponent shape={shape} points={points} />
       </MapContainer>
-      <ListContainer></ListContainer>
+
+      {/*//Routes List RightSide*/}
+      <ListContainer>
+        <ListCard
+          title={"Routes"}
+          routes={routes}
+          passRouteId={setRouteId}
+          setCurrentToken={setCurrentToken}
+          tokens={tokens}
+        />
+        {/* <RouteCard title={"Trips"}/> */}
+      </ListContainer>
     </MainContainer>
-  )
+  );
 };
 
 export default MainPage;
