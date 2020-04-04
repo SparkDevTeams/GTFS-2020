@@ -12,7 +12,6 @@ const Location = (props) => {
   }
 
   const handleGeoLocationSuccess = (positions) => {
-    console.log(positions);
     const {latitude, longitude, accuracy} = positions.coords;
     props.setCurrentLocation({position: [latitude, longitude], accuracy: accuracy});
   }
