@@ -3,6 +3,7 @@ import { ListContainer, MainContainer, MapContainer } from "./styles";
 import ListCard from "./ListCard";
 import API from "../../Services/API";
 import MapComponent from "./Map";
+import { transMethods } from "../../Static/values";
 
 const MainPage = () => {
   const [routeId, setRouteId] = useState("");
@@ -11,14 +12,18 @@ const MainPage = () => {
   const [tokens, setTokens] = useState({});
   const [currentToken, setCurrentToken] = useState("");
   const [points, setPoints] = useState([]);
+  const [currentTransMethod, setCurrentTransMethod] = useState(undefined);
 
-  const getDataPerRoute = useCallback(async (routeId) => {
-    if(routeId){
-      let shape = await API.getShapeByRoute(currentToken, routeId);
-      let stops = await API.getStopsByRoute(routeId);
-      setShape({...shape, stops});
-    }
-  }, [currentToken])
+  const getDataPerRoute = useCallback(
+    async (routeId) => {
+      if (routeId) {
+        let shape = await API.getShapeByRoute(currentToken, routeId);
+        let stops = await API.getStopsByRoute(routeId);
+        setShape({ ...shape, stops });
+      }
+    },
+    [currentToken]
+  );
 
   /*
   Onload get tokens,
@@ -62,13 +67,26 @@ const MainPage = () => {
 
       {/*//Routes List RightSide*/}
       <ListContainer>
-        <ListCard
-          title={"Routes"}
-          routes={routes}
-          passRouteId={setRouteId}
-          setCurrentToken={setCurrentToken}
-          tokens={tokens}
-        />
+        <select
+          value={currentTransMethod}
+          onChange={(e) => setCurrentTransMethod(e.currentTarget.value)}
+        >
+          {transMethods.map((method, idx) => (
+            <option value={method} key={idx}>
+              {method}
+            </option>
+          ))}
+        </select>
+        {currentTransMethod === transMethods[2] && (
+          <ListCard
+            title={"Routes"}
+            routes={routes}
+            passRouteId={setRouteId}
+            setCurrentToken={setCurrentToken}
+            tokens={tokens}
+          />
+        )}
+
         {/* <RouteCard title={"Trips"}/> */}
       </ListContainer>
     </MainContainer>

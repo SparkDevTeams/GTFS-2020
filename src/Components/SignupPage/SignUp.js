@@ -54,9 +54,9 @@ export default function SignUp() {
     let response = await API.registerUser(user, pwd, email);
 
     //Username was taken
-    if (response === undefined) {
+    if (response.message) {
       setError("usernameTaken", "validate");
-      setmodalText("There was an error signing up with the given information \n \n Email is already in use \n \n");
+      setmodalText(`There was an error signing up with the given information \n \n ${response.message} \n \n`);
       setmodalTitle("Sign up Error")
       showModal();
     } else {
