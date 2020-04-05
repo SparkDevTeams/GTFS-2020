@@ -28,8 +28,9 @@ const TrainsPanel = () => {
     let departureStation = departure ? departure : '';
     let departureTimeFormat = moment(departureTime).subtract(1, 'years').format('YYYY-MM-DD');
     let response = await API.getTrainSchedule(arrivalStation, departureStation, departureTimeFormat);
-    console.log(response)
-    setTrainSchedule(response);
+    if(Array.isArray(response)){
+      setTrainSchedule(response);
+    }
   }
 
   return (
