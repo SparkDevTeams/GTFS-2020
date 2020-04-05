@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import ReactDOM from 'react-dom';
-import { Route, Link, BrowserRouter as Router, Switch } from 'react-router-dom'
+import { Route, Link, HashRouter as Router, Switch } from 'react-router-dom'
 import './index.css';
 import App from './App';
 import SignUp from './Components/SignupPage/SignUp';
@@ -12,7 +12,7 @@ import UserProfile from './Components/UserProfile/UserProfile';
 const Routing = () => {
   const [navbarOpen, setNavbarOpen] = useState(false);
   return (
-    <Router>
+    <Router basename="/">
       <Navbar
         navbarState={navbarOpen}
         handleNavbar={() => setNavbarOpen(prevState => !prevState)}
