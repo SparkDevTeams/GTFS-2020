@@ -9,7 +9,6 @@ const TrirailPanel = (props) => {
   useEffect(() => {
     async function getTrirails() {
       let response = await API.getAllTrirail();
-      console.log(response);
       setTrirails(response);
     }
     getTrirails();
