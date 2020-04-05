@@ -47,6 +47,14 @@ const API = {
       return { message: "There was an error getting the stations" };
     }
   },
+  getTrainSchedule: async function (arrival, departure, date) {
+    try {
+      let response = await axios.get(`${URL}/trains/find?arrival=${arrival}&departure=${departure}&departure%20date=${date}`);
+      return response.data;
+    } catch (e) {
+      return { message: "There was an error getting your schedule" };
+    }
+  }
 };
 
 export default API;

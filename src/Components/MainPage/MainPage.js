@@ -1,9 +1,15 @@
 import React, { useEffect, useState, useCallback } from "react";
-import { ListContainer, MainContainer, MapContainer } from "./styles";
+import {
+  ListContainer,
+  MainContainer,
+  MapContainer,
+  PageTitle,
+} from "./styles";
 import ListCard from "./ListCard";
 import API from "../../Services/API";
 import MapComponent from "./Map";
 import { transMethods } from "../../Static/values";
+import TrainsPanel from "./TrainsPanel/TrainsPanel";
 
 const MainPage = () => {
   const [routeId, setRouteId] = useState("");
@@ -25,20 +31,17 @@ const MainPage = () => {
     [currentToken]
   );
 
-  /*
-  Onload get tokens,
-  save tokens,
-  set current token to first token
-  */
-  useEffect(() => {
-    async function fetchData() {
-      let apiTokens = await API.getTokens();
-      setTokens(apiTokens);
-      setCurrentToken(Object.values(apiTokens)[0]);
-    }
-    fetchData();
+  const getBusData = useCallback(async () => {
+    let apiTokens = await API.getTokens();
+    setTokens(apiTokens);
+    setCurrentToken(Object.values(apiTokens)[0]);
   }, []);
 
+  useEffect(() => {
+    if(currentTransMethod === transMethods[2]){
+      getBusData();
+    }
+  }, [currentTransMethod, getBusData])
   /*
   Fetches routes onLoad &
   Fetch routes per token passed
@@ -67,16 +70,19 @@ const MainPage = () => {
 
       {/*//Routes List RightSide*/}
       <ListContainer>
+        <PageTitle>Select Method of Transportation:</PageTitle>
         <select
           value={currentTransMethod}
           onChange={(e) => setCurrentTransMethod(e.currentTarget.value)}
         >
+          <option></option>
           {transMethods.map((method, idx) => (
             <option value={method} key={idx}>
               {method}
             </option>
           ))}
         </select>
+        {currentTransMethod === transMethods[0] && <TrainsPanel />}
         {currentTransMethod === transMethods[2] && (
           <ListCard
             title={"Routes"}

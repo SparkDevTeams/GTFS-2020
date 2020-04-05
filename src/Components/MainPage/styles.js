@@ -12,3 +12,11 @@ export const MapContainer = styled.div`
 export const ListContainer = styled.div`
   width: 25%;
 `;
+
+export const PageTitle = styled.p`
+  font-family: Montserrat;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 24px;
+  line-height: 44px;
+`;
