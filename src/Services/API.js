@@ -54,6 +54,22 @@ const API = {
     } catch (e) {
       return { message: "There was an error getting your schedule" };
     }
+  },
+  getAllTrirail: async function () {
+    try {
+      let response = await axios.get(`${URL}/trirail/find/all`);
+      return response.data;
+    } catch (e) {
+      return {message: "There was an error getting the trirails" };
+    }
+  },
+  getTrirailShape: async function (id) {
+    try {
+      let response =  await axios.get(`${URL}/trishape/find?id=${id}`);
+      return response.data;
+    } catch (e) {
+      return { message: "There was an error getting the trirails shape" };
+    }
   }
 };
 

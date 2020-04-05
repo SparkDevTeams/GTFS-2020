@@ -10,6 +10,7 @@ import API from "../../Services/API";
 import MapComponent from "./Map";
 import { transMethods } from "../../Static/values";
 import TrainsPanel from "./TrainsPanel/TrainsPanel";
+import TrirailPanel from './TrirailPanel/TrirailPanel';
 
 const MainPage = () => {
   const [routeId, setRouteId] = useState("");
@@ -83,6 +84,7 @@ const MainPage = () => {
           ))}
         </select>
         {currentTransMethod === transMethods[0] && <TrainsPanel />}
+        {currentTransMethod === transMethods[1] && <TrirailPanel setShape={setShape}/>}
         {currentTransMethod === transMethods[2] && (
           <ListCard
             title={"Routes"}

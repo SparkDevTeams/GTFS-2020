@@ -13,14 +13,21 @@ import Location from "../../Location/Location";
 
 const MapComponent = (props) => {
   const [shape, setShape] = useState({});
+  const [trirailShape, setTrirailShape] = useState([]);
   const [currentLocation, setCurrentLocation] = useState(undefined);
   const mapRef = useRef();
 
   useEffect(() => {
-    setShape(props.shape);
     if (props.shape?.RoutePath?.length) {
+      setShape(props.shape);
       let middle = Math.floor((props.shape?.RoutePath?.length - 1) / 2);
       mapRef.current.leafletElement.panTo(props.shape?.RoutePath?.[middle]);
+    }
+
+    if(Array.isArray(props.shape)){
+      setTrirailShape(props.shape);
+      let middle = Math.floor((props.shape.length - 1) / 2);
+      mapRef.current.leafletElement.panTo(props.shape[middle]);
     }
   }, [props.shape]);
 
@@ -52,6 +59,8 @@ const MapComponent = (props) => {
       {shape?.stops?.map((mark) => (
         <CircleMarker radius={3} center={mark}></CircleMarker>
       ))}
+
+      {trirailShape && <Polyline positions={trirailShape} />}
     </LeafletMap>
   );
 };
