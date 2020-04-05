@@ -17,9 +17,12 @@ export const Form = styled.form`
 
 export const FormContainer = styled.div`
   display: flex;
+  ${({wrap}) => wrap ? 'flex-wrap: wrap' : null};
   width: 100%;
   justify-content: center;
   margin-top: 20px;
+  max-height: 400px;
+  overflow: scroll;
 `;
 
 export const TextLabel = styled.label`
@@ -53,3 +56,14 @@ export const PageTitle = styled.p`
   margin-bottom: 25px;
 `;
 
+export const Text = styled.p`
+ font-family: Montserrat;
+ font-style: normal;
+ font-weight: normal;
+ font-size: 18px;
+ line-height: 22px;
+ text-align: center;
+ white-space: pre-line;
+ width: 300px;
+
+ `;

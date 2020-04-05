@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
-import { FormContainer, Form, TextField, TextLabel, InputButton } from "./styles";
+import { FormContainer, Form, TextField, TextLabel, InputButton, Text } from "./styles";
 import Card from "../../Commons/Card/Card";
 import API from "../../../Services/API";
+import {IoMdTrain} from 'react-icons/io';
 import moment from 'moment';
 
 const TrainsPanel = () => {
@@ -10,6 +11,8 @@ const TrainsPanel = () => {
   const [departureTime, setDepartureTime] = useState(today);
   const [arrival, setArrival] = useState(undefined);
   const [departure, setDeparture] = useState(undefined);
+  const [trainSchedule, setTrainSchedule] = useState([]);
+
   useEffect(() => {
     async function getStations() {
       let response = await API.getStations();
@@ -26,9 +29,11 @@ const TrainsPanel = () => {
     let departureTimeFormat = moment(departureTime).subtract(1, 'years').format('YYYY-MM-DD');
     let response = await API.getTrainSchedule(arrivalStation, departureStation, departureTimeFormat);
     console.log(response)
+    setTrainSchedule(response);
   }
 
   return (
+    <>
     <FormContainer>
       <Card>
         <Form onSubmit={handleSearch}>
@@ -56,6 +61,17 @@ const TrainsPanel = () => {
         </Form>
       </Card>
     </FormContainer>
+
+    <FormContainer wrap>
+      {trainSchedule.map((train, idx) => (
+        <Card key={idx} width="90%" height="20%" margin="10px" cursor="pointer" hover selfCenter> 
+          <Text>{train.origin} <IoMdTrain /> {train.destination}</Text>
+          <Text>Train: {train.train}</Text>
+          <Text>Departure: {moment(train.scheduledDeparture).format('MM/DD/YY kk:mma')}</Text>
+        </Card>
+      ))}
+    </FormContainer>
+    </>
   );
 };
 
