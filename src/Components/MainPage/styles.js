@@ -21,4 +21,13 @@ export const PageTitle = styled.p`
   font-weight: normal;
   font-size: 24px;
   line-height: 44px;
+  text-align: center;
+`;
+
+export const TextField = styled.input`
+  width:  100%;
+  height: 35px;
+  border: 1px solid rgba(48, 48, 48, 0.25);
+  border-radius: 5px;
+  margin-bottom: 20px;
 `;
