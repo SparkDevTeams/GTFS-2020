@@ -11,6 +11,8 @@ export const MapContainer = styled.div`
 
 export const ListContainer = styled.div`
   width: 25%;
+  max-height: 100%;
+  overflow: scroll;
 `;
 
 export const PageTitle = styled.p`
