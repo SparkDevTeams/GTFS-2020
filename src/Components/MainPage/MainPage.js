@@ -66,7 +66,7 @@ const MainPage = () => {
     // Map LeftSide
     <MainContainer>
       <MapContainer>
-        <MapComponent shape={shape} points={points} />
+        <MapComponent shape={shape} currentTransMethod={currentTransMethod} />
       </MapContainer>
 
       {/*//Routes List RightSide*/}
