@@ -8,15 +8,12 @@ export const Title = styled.h1`
 
 export const Container = styled.div`
   width: 100%;
-  height: 100%;
+  height: 90%;
   display: flex;
   flex-direction: column;
 `;
 
-export const TextField = styled.input`
-  width:  100%;
-  height: 35px;
-  border: 1px solid rgba(48, 48, 48, 0.25);
-  border-radius: 5px;
-  margin-bottom: 20px;
+export const CardListContainer = styled.div`
+  height: 100%;
+  width: 100%;
 `;

@@ -4,12 +4,14 @@ import {
   MainContainer,
   MapContainer,
   PageTitle,
+  TextField,
 } from "./styles";
 import ListCard from "./ListCard";
 import API from "../../Services/API";
 import MapComponent from "./Map";
 import { transMethods } from "../../Static/values";
 import TrainsPanel from "./TrainsPanel/TrainsPanel";
+import TrirailPanel from './TrirailPanel/TrirailPanel';
 
 const MainPage = () => {
   const [routeId, setRouteId] = useState("");
@@ -65,24 +67,25 @@ const MainPage = () => {
     // Map LeftSide
     <MainContainer>
       <MapContainer>
-        <MapComponent shape={shape} points={points} />
+        <MapComponent shape={shape} currentTransMethod={currentTransMethod} />
       </MapContainer>
 
       {/*//Routes List RightSide*/}
       <ListContainer>
         <PageTitle>Select Method of Transportation:</PageTitle>
-        <select
+        <TextField as="select"
           value={currentTransMethod}
-          onChange={(e) => setCurrentTransMethod(e.currentTarget.value)}
-        >
+          onChange={(e) => setCurrentTransMethod(e.currentTarget.value)}>
+        
           <option></option>
           {transMethods.map((method, idx) => (
             <option value={method} key={idx}>
               {method}
             </option>
           ))}
-        </select>
+        </TextField>
         {currentTransMethod === transMethods[0] && <TrainsPanel />}
+        {currentTransMethod === transMethods[1] && <TrirailPanel setShape={setShape}/>}
         {currentTransMethod === transMethods[2] && (
           <ListCard
             title={"Routes"}

@@ -28,7 +28,7 @@ const Navbar = (props) => {
             <Link to="/">Map</Link>
             <Link to="/profile">Account</Link>
             <Link to="/signup">Sign Up</Link>
-            <Link to="/">link </Link>
+       
           </NavLinks>
           <BurgerWrapper>
             <Menu

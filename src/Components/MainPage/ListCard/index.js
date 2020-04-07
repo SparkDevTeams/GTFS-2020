@@ -1,5 +1,5 @@
 import React from "react";
-import { Title, Container } from "./styles";
+import { Title, Container,TextField } from "./styles";
 import RouteCard from "../RouteCard";
 
 const ListCard = (props) => {
@@ -11,7 +11,7 @@ const ListCard = (props) => {
     <Container>
       {/* Displays Routes */}
       <Title>{props.title}</Title>
-      <select
+      <TextField as="select"
         value={props.currentToken}
         onChange={(e) => props.setCurrentToken(e.currentTarget.value)}
       >
@@ -20,7 +20,7 @@ const ListCard = (props) => {
             {token[0]}
           </option>
         ))}
-      </select>
+      </TextField>
         <RouteCard Routes={props.routes} callBack={getRouteID} />
     </Container>
   );
