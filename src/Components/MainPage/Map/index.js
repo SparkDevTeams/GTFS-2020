@@ -20,14 +20,12 @@ const MapComponent = (props) => {
   useEffect(() => {
     if (props.shape?.RoutePath?.length) {
       setShape(props.shape);
-      let middle = Math.floor((props.shape?.RoutePath?.length - 1) / 2);
-      mapRef.current.leafletElement.panTo(props.shape?.RoutePath?.[middle]);
+      mapRef.current.leafletElement.fitBounds(props.shape?.RoutePath);
     }
 
     if(Array.isArray(props.shape)){
       setTrirailShape(props.shape);
-      let middle = Math.floor((props.shape.length - 1) / 2);
-      mapRef.current.leafletElement.panTo(props.shape[middle]);
+      mapRef.current.leafletElement.fitBounds(props.shape);
     }
   }, [props.shape]);
 
