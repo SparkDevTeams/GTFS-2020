@@ -2,6 +2,8 @@ import styled from 'styled-components';
 
 export const Title = styled.h1`
   text-align: center;
+  font-family: Montserrat;
+  font-weight: normal;
 `;
 
 export const Container = styled.div`
