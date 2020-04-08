@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import API from "../../Services/API.js";
-import { useHistory } from "react-router-dom";
 import { TextField, Form, FormContainer, TextLabel, InputButton, PageTitle} from "./styles";
 import Card from "../Commons/Card/Card.js";
 import Modal from "../Commons/Modal/Modal";
