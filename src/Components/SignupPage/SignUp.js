@@ -76,7 +76,7 @@ export default function SignUp() {
 
   return (
     <FormContainer>
-      <Modal onClose={showModal} title={modalTitle} show={show} message={modalText}/>
+      <Modal onClose={showModal} title={modalTitle} show={show} success={success} message={modalText}/>
       <Card width="50%" xs="95%">
         <Form className="signup-form" onSubmit={handleSubmit(onSubmit)}>
           <PageTitle>Sign up</PageTitle>
