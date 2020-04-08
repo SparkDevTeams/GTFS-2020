@@ -9,7 +9,7 @@ const Modal = props => {
 
 
   const onClose = e => {
-    if(this.props.success === true)
+    if(props.success === true)
     {
       history.push("/");
     }
