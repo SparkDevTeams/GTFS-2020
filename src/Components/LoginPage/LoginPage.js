@@ -37,12 +37,10 @@ const Login = () => {
     setShow((prev) => !prev);
   }
 
-  const validate = async ({ pwd, username }) => {
-    let response = await API.LoginUser(username, pwd);
-
+  const validate = async ({ user, pwd }) => {
+    let response = await API.LoginUser(user, pwd);
     //Username was taken
     if (response.message) {
-      setError("usernameTaken", "validate");
       setmodalText(
         `There was an error signing up with the given information \n \n ${response.message} \n \n`
       );
@@ -59,9 +57,9 @@ const Login = () => {
         "Succesfuly created an account! Will Redirect in 5 seconds."
       );
       showModal();
-      setTimeout(function () {
+      /*setTimeout(function () {
         history.push("/");
-      }, 5000);
+      }, 5000);*/
     }
   };
 

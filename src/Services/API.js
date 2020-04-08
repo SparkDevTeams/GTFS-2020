@@ -49,7 +49,9 @@ const API = {
   },
   getTrainSchedule: async function (arrival, departure, date) {
     try {
-      let response = await axios.get(`${URL}/trains/find?arrival=${arrival}&departure=${departure}&departure%20date=${date}`);
+      let response = await axios.get(
+        `${URL}/trains/find?arrival=${arrival}&departure=${departure}&departure%20date=${date}`
+      );
       return response.data;
     } catch (e) {
       return { message: "There was an error getting your schedule" };
@@ -60,25 +62,33 @@ const API = {
       let response = await axios.get(`${URL}/trirail/find/all`);
       return response.data;
     } catch (e) {
-      return {message: "There was an error getting the trirails" };
+      return { message: "There was an error getting the trirails" };
     }
   },
   getTrirailShape: async function (id) {
     try {
-      let response =  await axios.get(`${URL}/trishape/find?id=${id}`);
+      let response = await axios.get(`${URL}/trishape/find?id=${id}`);
       return response.data;
     } catch (e) {
       return { message: "There was an error getting the trirails shape" };
     }
   },
-  LoginUser: async function (username, password){
+  LoginUser: async function (username, password) {
     try {
-      let response = await axios.post(`${URL}/login`, {user: username, pwd: password})
+      let response = await axios.post(`${URL}/login`, {
+        user: username,
+        pwd: password,
+      });
       return response.data;
     } catch (e) {
-      return { message: "There was an error login in"}
+      switch (e?.response?.status) {
+        case 404:
+          return { message: e.response.data.Error };
+        default:
+          return { message: "There was an error login in" };
+      }
     }
-  }
+  },
 };
 
 export default API;
