@@ -70,7 +70,7 @@ export default function SignUp() {
       setmodalText("Successful created an account!")
       setSuccess(true);
       showModal();
-      setTimeout(function() { ; }, 5000);
+      setTimeout(function() { history.push("/");; }, 5000);
     }
   };
 

@@ -2,6 +2,7 @@ import React from "react";
 import Card from "../Card/Card";
 import {CardDescription, CardTitle, ModalBackground, ModalText} from "./styles";
 import {Form, InputButton} from "../../SignupPage/styles";
+import { useHistory } from "react-router-dom";
 
 const Modal = props => {
 
