@@ -53,3 +53,12 @@ export const PageTitle = styled.p`
   margin-bottom: 25px;
 `;
 
+export const ErrorMessage = styled.p`
+  font-family: Montserrat;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  color: red;
+  margin-top: -15px;
+  margin-bottom: 10px;
+`;
