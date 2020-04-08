@@ -11,6 +11,7 @@ export default function SignUp() {
   const [show, setShow] = useState(false);
   const [modalText, setmodalText] = useState("");
   const [modalTitle, setmodalTitle] = useState("");
+  const [success, setSuccess] = useState(false);
   const {
     register,
     handleSubmit,
@@ -66,7 +67,8 @@ export default function SignUp() {
      * Redirects to Home page('/')
      */
       clearError("user");
-      setmodalText("Successful created an account! Will Redirect in 5 seconds.")
+      setmodalText("Successful created an account!")
+      setSuccess(true);
       showModal();
       setTimeout(function() { history.push("/");; }, 5000);
     }
