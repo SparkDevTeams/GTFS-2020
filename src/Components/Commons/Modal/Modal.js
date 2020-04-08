@@ -6,6 +6,10 @@ import {Form, InputButton} from "../../SignupPage/styles";
 const Modal = props => {
 
   const onClose = e => {
+    if(this.props.success === true)
+    {
+      history.push("/");
+    }
     return props.onClose?.(e)
   };
 
