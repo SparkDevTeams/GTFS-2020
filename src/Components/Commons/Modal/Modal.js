@@ -5,6 +5,8 @@ import {Form, InputButton} from "../../SignupPage/styles";
 import { useHistory } from "react-router-dom";
 
 const Modal = props => {
+  let history = useHistory();
+
 
   const onClose = e => {
     if(this.props.success === true)
