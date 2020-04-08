@@ -70,6 +70,14 @@ const API = {
     } catch (e) {
       return { message: "There was an error getting the trirails shape" };
     }
+  },
+  LoginUser: async function (username, password){
+    try {
+      let response = await axios.post(`${URL}/login`, {user: username, pwd: password})
+      return response.data;
+    } catch (e) {
+      return { message: "There was an error login in"}
+    }
   }
 };
 
