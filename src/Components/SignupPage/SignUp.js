@@ -6,7 +6,6 @@ import Card from "../Commons/Card/Card.js";
 import Modal from "../Commons/Modal/Modal";
 
 export default function SignUp() {
-  let history = useHistory();
   const [show, setShow] = useState(false);
   const [modalText, setmodalText] = useState("");
   const [modalTitle, setmodalTitle] = useState("");
