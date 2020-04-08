@@ -66,7 +66,7 @@ export default function SignUp() {
      * Redirects to Home page('/')
      */
       clearError("user");
-      setmodalText("Succesfuly created an account! Will Redirect in 5 seconds.")
+      setmodalText("Successful created an account! Will Redirect in 5 seconds.")
       showModal();
       setTimeout(function() { history.push("/");; }, 5000);
     }
