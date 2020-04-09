@@ -75,10 +75,8 @@ const API = {
   },
   LoginUser: async function (username, password) {
     try {
-      let response = await axios.post(`${URL}/login`, {
-        user: username,
-        pwd: password,
-      });
+      let base64encoded = btoa(`${username}:${password}`);
+      let response = await axios.get(`${URL}/login`, {headers: {Authorization: `Basic ${base64encoded}`}});
       return response.data;
     } catch (e) {
       switch (e?.response?.status) {
