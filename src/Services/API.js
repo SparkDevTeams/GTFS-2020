@@ -87,6 +87,14 @@ const API = {
       }
     }
   },
+  getUserInfo: async function (username) {
+    try {
+      let response = await axios.get(`${URL}/profile?user=${username}`);
+      return response.data;
+    } catch (e) {
+      return { message: 'There was an error getting the user profile'};
+    }
+  }
 };
 
 export default API;

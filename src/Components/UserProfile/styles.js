@@ -21,7 +21,7 @@ display: flex;
 align-items: center;
 font-size: 16px;
 justify-content: center;
-width: 30%;
+width: ${({isLoggedIn}) => isLoggedIn ? '30%':'100%'};
 margin-top: 5%;
 `;
 

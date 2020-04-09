@@ -24,7 +24,7 @@ const Routing = () => {
         <Switch>
           <Route path="/signup" component={SignUp} />
           <Route path="/login" component={Login} />
-          <Route path="/profile" component={UserProfile} />
+          <Route path="/profile/:username" component={UserProfile} />
           <Route path="/" component={App} />
         </Switch>
       </div>
