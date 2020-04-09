@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Container, CardListContainer, Title } from "./styles";
 import API from "../../../Services/API";
 import Card from "../../Commons/Card/Card";
+import {IoMdTrain} from 'react-icons/io';
 
 const TrirailPanel = (props) => {
   const [trirails, setTrirails] = useState([]);
@@ -33,7 +34,7 @@ const TrirailPanel = (props) => {
             key={trirail.id}
             onClick={() => handleTrirailClick(trirail.id)}
           >
-            {trirail.name}
+            <IoMdTrain />{trirail.name}
           </Card>
         ))}
       </CardListContainer>

@@ -8,6 +8,7 @@ import {
   Marker,
   Circle,
 } from "react-leaflet";
+import { transMethods } from "../../..//Static/values";
 
 import Location from "../../Location/Location";
 
@@ -15,15 +16,19 @@ const MapComponent = (props) => {
   const [shape, setShape] = useState({});
   const [trirailShape, setTrirailShape] = useState([]);
   const [currentLocation, setCurrentLocation] = useState(undefined);
+  const [showPolyline, setShowPolyline] = useState('');
   const mapRef = useRef();
 
   useEffect(() => {
     if (props.shape?.RoutePath?.length) {
+      setShowPolyline('route');
       setShape(props.shape);
+      console.log(props.shape)
       mapRef.current.leafletElement.fitBounds(props.shape?.RoutePath);
     }
 
     if(Array.isArray(props.shape)){
+      setShowPolyline('trirail');
       setTrirailShape(props.shape);
       mapRef.current.leafletElement.fitBounds(props.shape);
     }
@@ -51,14 +56,17 @@ const MapComponent = (props) => {
           />
         </>
       )}
-      <Polyline positions={shape?.RoutePath || []} color={shape?.LineColor}>
+      {showPolyline === 'route' && (<><Polyline positions={shape?.RoutePath || []} color={shape?.LineColor}>
         <Popup>{shape.RoutePath && <div>{shape.Names}</div>}</Popup>
       </Polyline>
-      {shape?.stops?.map((mark) => (
-        <CircleMarker radius={3} center={mark}></CircleMarker>
-      ))}
+      {shape?.stops?.map((mark) => <CircleMarker radius={3} center={mark.Shape}><Popup>
+          <div>
+            {mark.StopName}: {Array.from(new Set(mark.Street.split(' '))).join(' ')}
+          </div>
+        </Popup></CircleMarker>)
+      }</>)}
 
-      {trirailShape && <Polyline positions={trirailShape} />}
+      {showPolyline === 'trirail' && trirailShape && <Polyline positions={trirailShape} />}
     </LeafletMap>
   );
 };
