@@ -21,6 +21,7 @@ export default function SignUp() {
   const [modalTitle, setmodalTitle] = useState("");
   const [success, setSuccess] = useState(false);
   const [buttonText, setButtonText] = useState('Close');
+  const [user, setUser] = useState('');
   const {
     register,
     handleSubmit,
@@ -38,9 +39,9 @@ export default function SignUp() {
   const handleModalButton = useCallback(() => {
     setShow(false);
     if(success){
-      history.push('/profile');
+      history.push(`/profile/${user}`);
     }
-  }, [success, history]);
+  }, [success, history, user]);
 
   const validate = async ({ user, pwd, email }) => {
     let response = await API.registerUser(user, pwd, email);
@@ -53,12 +54,7 @@ export default function SignUp() {
       setmodalTitle("Sign up Error");
       setSuccess(false);
     } else {
-      /**
-       * Username was not taken,
-       * Gets registered in backend
-       * Redirects to Home page('/')
-       */
-      clearError("user");
+      setUser(user);
       setmodalText(
         "Succesfuly created an account!"
       );

@@ -26,6 +26,7 @@ const API = {
         user: username,
         pwd: password,
         email,
+        address: ''
       });
       return response.data;
     } catch (e) {
@@ -82,6 +83,8 @@ const API = {
       switch (e?.response?.status) {
         case 404:
           return { message: e.response.data.Error };
+        case 400:
+          return { message: e.response.data.error };
         default:
           return { message: "There was an error login in" };
       }
