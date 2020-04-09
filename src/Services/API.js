@@ -3,7 +3,7 @@ const URL = "https://gtfs-mdc.herokuapp.com";
 
 const API = {
   getRoutes: async function (token) {
-    let response = await axios.get(`${URL}/routes/find/all?token=${token}`);
+    let response = await axios.get(`${URL}/routes/find/all?tkn=${token}`);
     return response.data;
   },
   getTokens: async () => {
@@ -51,7 +51,7 @@ const API = {
   getTrainSchedule: async function (arrival, departure, date) {
     try {
       let response = await axios.get(
-        `${URL}/trains/find?arrival=${arrival}&departure=${departure}&departure%20date=${date}`
+        `${URL}/trains/find?arrival=${arrival}&departure=${departure}&departureDate=${date}`
       );
       return response.data;
     } catch (e) {
