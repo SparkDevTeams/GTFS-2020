@@ -97,6 +97,14 @@ const API = {
     } catch (e) {
       return { message: 'There was an error getting the user profile'};
     }
+  },
+  updateUserInfo: async function (data) {
+    try {
+      let response = await axios.patch(`${URL}/update`, data, {headers : {'content-type': 'multipart/form-data'}});
+      return response;
+    } catch (e) {
+      return { message: 'There was an error updating your Profile'}
+    }
   }
 };
 
