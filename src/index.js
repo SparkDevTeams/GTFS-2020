@@ -8,6 +8,7 @@ import * as serviceWorker from './serviceWorker';
 import Navbar from "./Components/navbar/Navbar";
 import GlobalStyle from './Components/Styles/Global';
 import UserProfile from './Components/UserProfile/UserProfile';
+import Login from './Components/LoginPage/LoginPage';
 
 const Routing = () => {
   const [navbarOpen, setNavbarOpen] = useState(false);
@@ -22,6 +23,7 @@ const Routing = () => {
       <div style={{ height: "100vh", paddingTop: "50px" }}>
         <Switch>
           <Route path="/signup" component={SignUp} />
+          <Route path="/login" component={Login} />
           <Route path="/profile" component={UserProfile} />
           <Route path="/" component={App} />
         </Switch>

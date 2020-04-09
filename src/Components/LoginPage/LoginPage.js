@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import API from "../../Services/API.js";
+import { useHistory } from "react-router-dom";
 import {
   TextField,
   Form,
@@ -13,17 +14,17 @@ import {
 import Card from "../Commons/Card/Card.js";
 import Modal from "../Commons/Modal/Modal";
 
-export default function SignUp() {
+const Login = () => {
   let history = useHistory();
   const [show, setShow] = useState(false);
   const [modalText, setmodalText] = useState("");
   const [modalTitle, setmodalTitle] = useState("");
-  const [success, setSuccess] = useState(false);
   const {
     register,
     handleSubmit,
     watch,
     errors,
+    setError,
     clearError,
     formState,
   } = useForm();
@@ -36,9 +37,8 @@ export default function SignUp() {
     setShow((prev) => !prev);
   }
 
-  const validate = async ({ user, pwd, email }) => {
-    let response = await API.registerUser(user, pwd, email);
-
+  const validate = async ({ user, pwd }) => {
+    let response = await API.LoginUser(user, pwd);
     //Username was taken
     if (response.message) {
       setmodalText(
@@ -54,10 +54,12 @@ export default function SignUp() {
        */
       clearError("user");
       setmodalText(
-        "Successfuly created an account! Will Redirect in 5 seconds."
+        "Succesfuly created an account! Will Redirect in 5 seconds."
       );
-      setSuccess(true);
       showModal();
+      /*setTimeout(function () {
+        history.push("/");
+      }, 5000);*/
     }
   };
 
@@ -67,28 +69,11 @@ export default function SignUp() {
         onClose={showModal}
         title={modalTitle}
         show={show}
-        success={success}
         message={modalText}
       />
       <Card width="50%" xs="95%">
         <Form className="signup-form" onSubmit={handleSubmit(onSubmit)}>
-          <PageTitle>Sign up</PageTitle>
-          <TextLabel className="signup-label">Email</TextLabel>
-          <TextField
-            className="signup-input"
-            name="email"
-            ref={register({
-              required: { value: true, message: "Email is required" },
-              pattern: {
-                value: /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/,
-                message: "Please enter a valid Email",
-              },
-            })}
-          />
-          {errors?.email?.message && (
-            <ErrorMessage>{errors?.email?.message}</ErrorMessage>
-          )}
-
+          <PageTitle>Login</PageTitle>
           <TextLabel className="signup-label">Username</TextLabel>
           <TextField
             className="signup-input"
@@ -97,7 +82,7 @@ export default function SignUp() {
               required: { value: true, message: "Username is required" },
               minLength: {
                 value: 6,
-                message: "Username has to be atleast 6 characters",
+                message: "Username has atleast 6 characters",
               },
               maxLength: {
                 value: 100,
@@ -105,20 +90,19 @@ export default function SignUp() {
               },
             })}
           />
+
           {errors?.user?.message && (
             <ErrorMessage>{errors?.user?.message}</ErrorMessage>
           )}
-
           <TextLabel className="signup-label">Password</TextLabel>
           <TextField
             type="password"
-            className="signup-input"
             name="pwd"
             ref={register({
               required: { value: true, message: "Password is required" },
               minLength: {
                 value: 6,
-                message: "Username has to be atleast 6 characters",
+                message: "Username has atleast 6 characters",
               },
               maxLength: {
                 value: 100,
@@ -133,12 +117,13 @@ export default function SignUp() {
 
           <InputButton
             disabled={formState.isSubmitting}
-            className="signup-button"
             type="submit"
-            value="Create Account"
+            value="Login"
           />
         </Form>
       </Card>
     </FormContainer>
   );
-}
+};
+
+export default Login;
