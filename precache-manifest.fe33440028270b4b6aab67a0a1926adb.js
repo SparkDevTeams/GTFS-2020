@@ -1,10 +1,10 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "dfca5f019e0802e099bb70cfc6ca6003",
+    "revision": "890890822e11202138f0b221cbcb1dec",
     "url": "/GTFS-2020/index.html"
   },
   {
-    "revision": "50d4dfaab31b3772372a",
+    "revision": "20b0a17658721671d35f",
     "url": "/GTFS-2020/static/css/main.5c7c688c.chunk.css"
   },
   {
@@ -16,8 +16,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/GTFS-2020/static/js/2.27c6ccf7.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "50d4dfaab31b3772372a",
-    "url": "/GTFS-2020/static/js/main.c5b3deea.chunk.js"
+    "revision": "20b0a17658721671d35f",
+    "url": "/GTFS-2020/static/js/main.4aadb46f.chunk.js"
   },
   {
     "revision": "bb22edec673673bb9ab8",
