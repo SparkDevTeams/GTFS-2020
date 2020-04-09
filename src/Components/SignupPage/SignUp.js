@@ -14,7 +14,6 @@ import Card from "../Commons/Card/Card.js";
 import Modal from "../Commons/Modal/Modal";
 
 export default function SignUp() {
-  let history = useHistory();
   const [show, setShow] = useState(false);
   const [modalText, setmodalText] = useState("");
   const [modalTitle, setmodalTitle] = useState("");
@@ -53,8 +52,9 @@ export default function SignUp() {
        * Redirects to Home page('/')
        */
       clearError("user");
+      setmodalTitle("Success!");
       setmodalText(
-        "Successfuly created an account! Will Redirect in 5 seconds."
+        "Press close to be redirected to map"
       );
       setSuccess(true);
       showModal();
