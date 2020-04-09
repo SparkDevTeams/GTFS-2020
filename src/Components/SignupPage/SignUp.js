@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useCallback } from "react";
 import { useForm } from "react-hook-form";
 import API from "../../Services/API.js";
 import { useHistory } from "react-router-dom";
@@ -19,6 +19,8 @@ export default function SignUp() {
   const [show, setShow] = useState(false);
   const [modalText, setmodalText] = useState("");
   const [modalTitle, setmodalTitle] = useState("");
+  const [success, setSuccess] = useState(false);
+  const [buttonText, setButtonText] = useState('Close');
   const {
     register,
     handleSubmit,
@@ -32,9 +34,13 @@ export default function SignUp() {
     validate(data);
   };
 
-  function showModal() {
-    setShow((prev) => !prev);
-  }
+  
+  const handleModalButton = useCallback(() => {
+    setShow(false);
+    if(success){
+      history.push('/profile');
+    }
+  }, [success, history]);
 
   const validate = async ({ user, pwd, email }) => {
     let response = await API.registerUser(user, pwd, email);
@@ -45,7 +51,7 @@ export default function SignUp() {
         `There was an error signing up with the given information \n \n ${response.message} \n \n`
       );
       setmodalTitle("Sign up Error");
-      showModal();
+      setSuccess(false);
     } else {
       /**
        * Username was not taken,
@@ -54,22 +60,22 @@ export default function SignUp() {
        */
       clearError("user");
       setmodalText(
-        "Succesfuly created an account! Will Redirect in 5 seconds."
+        "Succesfuly created an account!"
       );
-      showModal();
-      setTimeout(function () {
-        history.push("/");
-      }, 5000);
+      setButtonText('Go to Profile')
+      setSuccess(true);
     }
+    setShow(true);
   };
 
   return (
     <FormContainer>
       <Modal
-        onClose={showModal}
+        onClose={handleModalButton}
         title={modalTitle}
         show={show}
         message={modalText}
+        buttonText={buttonText}
       />
       <Card width="50%" xs="95%">
         <Form className="signup-form" onSubmit={handleSubmit(onSubmit)}>
