@@ -50,12 +50,13 @@ const Login = () => {
       setmodalText(
         `There was an error signing up with the given information \n \n ${response.message} \n \n`
       );
-      setmodalTitle("Sign up Error");
+      setmodalTitle("Sign in Error");
       setSuccess(false);
     } else {
       setmodalText(
-        "Succesfuly created an account! Will Redirect in 5 seconds."
+        "You have successfuly signed in! \n \n"
       );
+      setmodalTitle("Success");
       setUser(user);
       localStorage.setItem('user', JSON.stringify({username: user, token: response.token}));
       setButtonText('Go to Profile')

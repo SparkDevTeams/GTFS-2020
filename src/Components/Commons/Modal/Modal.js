@@ -11,7 +11,7 @@ const Modal = (props) => {
   return (
     <ModalBackground show={props.show}>
       <Card position="relative" width="558px" height="325px" direction="column">
-        {/*Todo align to top left*/}
+        {/*Todo Fix align to top left of modal*/}
         <CardTitle>{props.title}</CardTitle>
         <ModalText className="content">{props.message}</ModalText>
         <div className="actions">
