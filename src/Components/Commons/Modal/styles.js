@@ -13,12 +13,11 @@ export const ModalBackground = styled.div`
   align-items: center;
 `;
 
-//TODO FULTON NEED HELP WITH THIS: align to top left of modal
 export const CardTitle = styled.h1`
-    position: inherit;
+    position: absolute;
     top: 8px;
-    left: auto;
-    text-align: left
+    left: 16px;
+    text-align: left;
 `;
 
 export const CardDescription = styled.pre`

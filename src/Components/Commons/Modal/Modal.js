@@ -1,17 +1,11 @@
 import React from "react";
 import Card from "../Card/Card";
-import { CardTitle, CardDescription, ModalBackground, ModalText } from "./styles";
+import { CardTitle, ModalBackground, ModalText } from "./styles";
 import { InputButton } from "../../SignupPage/styles";
-import { useHistory } from "react-router-dom";
 
 const Modal = (props) => {
-    let history = useHistory();
-
   const onClose = (e) => {
-      if(props.success === true){
-          history.push("/");
-      }
-      return props.onClose?.(e);
+    return props.onClose?.(e);
   };
 
   return (

@@ -1,6 +1,7 @@
 import React, { useState, useCallback } from "react";
 import { useForm } from "react-hook-form";
 import API from "../../Services/API.js";
+import { useHistory } from "react-router-dom";
 import {
   TextField,
   Form,
@@ -14,14 +15,12 @@ import Card from "../Commons/Card/Card.js";
 import Modal from "../Commons/Modal/Modal";
 
 export default function SignUp() {
+  let history = useHistory();
   const [show, setShow] = useState(false);
   const [modalText, setmodalText] = useState("");
   const [modalTitle, setmodalTitle] = useState("");
   const [success, setSuccess] = useState(false);
-<<<<<<< HEAD
-=======
   const [buttonText, setButtonText] = useState('Close');
->>>>>>> dev
   const {
     register,
     handleSubmit,
@@ -60,19 +59,11 @@ export default function SignUp() {
        * Redirects to Home page('/')
        */
       clearError("user");
-      setmodalTitle("Success!");
       setmodalText(
-<<<<<<< HEAD
-        "Press close to be redirected to map"
-      );
-      setSuccess(true);
-      showModal();
-=======
         "Succesfuly created an account!"
       );
       setButtonText('Go to Profile')
       setSuccess(true);
->>>>>>> dev
     }
     setShow(true);
   };
@@ -83,7 +74,6 @@ export default function SignUp() {
         onClose={handleModalButton}
         title={modalTitle}
         show={show}
-        success={success}
         message={modalText}
         buttonText={buttonText}
       />
