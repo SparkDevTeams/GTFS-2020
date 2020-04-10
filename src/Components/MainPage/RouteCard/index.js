@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import Card from "../../Commons/Card/Card";
 import { CardListContainer } from './styles';
+import { IoIosBus } from 'react-icons/io';
 
 
 const RouteCard = (props) => {
@@ -27,7 +28,7 @@ const RouteCard = (props) => {
         routes.map((route, i) =>
           <Card width="90%" height="20%" margin="10px" cursor="pointer" hover selfCenter key={route.RouteId}
             onClick={() => handleRouteClick(route)}>
-            {route.Name1}
+            <IoIosBus/> {route.Name1}
           </Card>
         )
       }

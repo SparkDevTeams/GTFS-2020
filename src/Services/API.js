@@ -3,7 +3,7 @@ const URL = "https://gtfs-mdc.herokuapp.com";
 
 const API = {
   getRoutes: async function (token) {
-    let response = await axios.get(`${URL}/routes/find/all?token=${token}`);
+    let response = await axios.get(`${URL}/routes/find/all?tkn=${token}`);
     return response.data;
   },
   getTokens: async () => {
@@ -26,6 +26,7 @@ const API = {
         user: username,
         pwd: password,
         email,
+        address: ''
       });
       return response.data;
     } catch (e) {
@@ -50,7 +51,7 @@ const API = {
   getTrainSchedule: async function (arrival, departure, date) {
     try {
       let response = await axios.get(
-        `${URL}/trains/find?arrival=${arrival}&departure=${departure}&departure%20date=${date}`
+        `${URL}/trains/find?arrival=${arrival}&departure=${departure}&departureDate=${date}`
       );
       return response.data;
     } catch (e) {
@@ -82,11 +83,29 @@ const API = {
       switch (e?.response?.status) {
         case 404:
           return { message: e.response.data.Error };
+        case 400:
+          return { message: e.response.data.error };
         default:
           return { message: "There was an error login in" };
       }
     }
   },
+  getUserInfo: async function (username) {
+    try {
+      let response = await axios.get(`${URL}/profile?user=${username}`);
+      return response.data;
+    } catch (e) {
+      return { message: 'There was an error getting the user profile'};
+    }
+  },
+  updateUserInfo: async function (data) {
+    try {
+      let response = await axios.patch(`${URL}/update`, data, {headers : {'content-type': 'multipart/form-data'}});
+      return response;
+    } catch (e) {
+      return { message: 'There was an error updating your Profile'}
+    }
+  }
 };
 
 export default API;

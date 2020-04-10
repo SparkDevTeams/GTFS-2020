@@ -20,6 +20,7 @@ const Login = () => {
   const [modalText, setmodalText] = useState("");
   const [modalTitle, setmodalTitle] = useState("");
   const [success, setSuccess] = useState(false);
+  const [user, setUser] = useState('');
   const {
     register,
     handleSubmit,
@@ -38,9 +39,9 @@ const Login = () => {
   const handleModalButton = useCallback(() => {
     setShow(false);
     if(success){
-      history.push('/profile');
+      history.push(`/profile/${user}`);
     }
-  }, [success, history]);
+  }, [success, history, user]);
 
   const validate = async ({ user, pwd }) => {
     let response = await API.LoginUser(user, pwd);
@@ -55,6 +56,8 @@ const Login = () => {
       setmodalText(
         "Succesfuly created an account! Will Redirect in 5 seconds."
       );
+      setUser(user);
+      localStorage.setItem('user', JSON.stringify({username: user, token: response.token}));
       setButtonText('Go to Profile')
       setSuccess(true);
     }

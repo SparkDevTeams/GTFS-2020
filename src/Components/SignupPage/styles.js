@@ -6,6 +6,7 @@ export const TextField = styled.input`
   border: 1px solid rgba(48, 48, 48, 0.25);
   border-radius: 5px;
   margin-bottom: 20px;
+  padding:${({type}) => type === 'file' ? '1.5%' : '10px'};
 `;
 
 export const Form = styled.form` 
